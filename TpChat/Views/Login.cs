@@ -1,18 +1,21 @@
 ﻿using Gecko;
 using System;
 using System.Windows.Forms;
+using TpChat.Controllers.Login;
 
 namespace TpChat.Views
 {
     public partial class Login : Form
     {
-        public bool Joined = false;
         public Login()
         {
             InitializeComponent();
-            this.cmbxSex.SelectedItem = cmbxSex.Items[0];
+            this.cmbxGender.SelectedItem = cmbxGender.Items[0];
             Xpcom.Initialize("Firefox");
-            geckoWebBrowser1.Navigate("http://www.persiann24.tk/");
+        }
+        private void Login_Load(object sender, EventArgs e)
+        {
+            this.browser.Navigate(Data.URL);
         }
 
         private void chkboxShowPass_CheckedChanged(object sender, EventArgs e)
@@ -25,19 +28,39 @@ namespace TpChat.Views
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
+            /* TODO */
+            // set a loader for loading the website before displaying controllers.
+
             if (this.txtboxUsername.Text != string.Empty)
             {
-                MessageBox.Show(this.txtboxUsername.Text);
-                this.Joined = true;
-                this.Close();
+                if (Data.FirstSubmit)
+                {
+                    var document = browser.Document;
+
+                    (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
+                        .Value = txtboxUsername.Text;
+
+                    (document.GetElementById(Data.ID.GENDER) as Gecko.DOM.GeckoSelectElement)
+                        .SelectedIndex = this.cmbxGender.SelectedIndex;
+
+                    (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
+                        .Click();
+                }
+                // Second Submit
+                else
+                {
+                    Phase2();
+                    // ..
+                }
             }
             else
                 MessageBox.Show("نام کاربری خود را وارد کنید");
         }
 
-        private void EnablePass()
+        private void Phase2()
         {
             this.label2.Enabled = true;
+            this.cmbxGender.Enabled = false;
             this.chkboxShowPass.Enabled = true;
             this.txtboxPassword.Enabled = true;
         }
@@ -46,5 +69,7 @@ namespace TpChat.Views
         {
 
         }
+
+        
     }
 }
