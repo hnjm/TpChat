@@ -36,6 +36,7 @@
             this.chkboxShowPass = new System.Windows.Forms.CheckBox();
             this.btnJoin = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
             this.SuspendLayout();
             // 
             // txtboxUsername
@@ -140,11 +141,21 @@
             this.btnHelp.UseVisualStyleBackColor = false;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
+            // geckoWebBrowser1
+            // 
+            this.geckoWebBrowser1.FrameEventsPropagateToMainWindow = false;
+            this.geckoWebBrowser1.Location = new System.Drawing.Point(12, 150);
+            this.geckoWebBrowser1.Name = "geckoWebBrowser1";
+            this.geckoWebBrowser1.Size = new System.Drawing.Size(362, 260);
+            this.geckoWebBrowser1.TabIndex = 1003;
+            this.geckoWebBrowser1.UseHttpActivityObserver = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 152);
+            this.ClientSize = new System.Drawing.Size(386, 422);
+            this.Controls.Add(this.geckoWebBrowser1);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnJoin);
             this.Controls.Add(this.chkboxShowPass);
@@ -171,5 +182,6 @@
         private System.Windows.Forms.CheckBox chkboxShowPass;
         private System.Windows.Forms.Button btnJoin;
         private System.Windows.Forms.Button btnHelp;
+        private Gecko.GeckoWebBrowser geckoWebBrowser1;
     }
 }

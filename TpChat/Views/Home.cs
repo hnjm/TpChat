@@ -12,9 +12,14 @@ namespace TpChat.Views
 {
     public partial class Home : Form
     {
-        public Home()
+        Gecko.GeckoWebBrowser browser;
+        public Home(Gecko.GeckoWebBrowser browser)
         {
             InitializeComponent();
+            //
+            this.browser = browser;
+            browser.Dock = DockStyle.Fill;
+            browser.Visible = true;
         }
     }
 }

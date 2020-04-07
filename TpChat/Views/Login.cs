@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Gecko;
+using System;
 using System.Windows.Forms;
 
 namespace TpChat.Views
 {
     public partial class Login : Form
     {
+        public bool Joined = false;
         public Login()
         {
             InitializeComponent();
             this.cmbxSex.SelectedItem = cmbxSex.Items[0];
+            Xpcom.Initialize("Firefox");
+            geckoWebBrowser1.Navigate("http://www.persiann24.tk/");
         }
 
         private void chkboxShowPass_CheckedChanged(object sender, EventArgs e)
@@ -29,7 +26,11 @@ namespace TpChat.Views
         private void btnJoin_Click(object sender, EventArgs e)
         {
             if (this.txtboxUsername.Text != string.Empty)
+            {
                 MessageBox.Show(this.txtboxUsername.Text);
+                this.Joined = true;
+                this.Close();
+            }
             else
                 MessageBox.Show("نام کاربری خود را وارد کنید");
         }
