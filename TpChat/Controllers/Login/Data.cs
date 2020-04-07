@@ -10,7 +10,6 @@ namespace TpChat.Controllers.Login
     {
         //public Cookie;
         public static bool Joined = false;
-        public static bool FirstSubmit = true;
 
         public const string URL = "http://www.persiann24.tk/";
         public struct ID

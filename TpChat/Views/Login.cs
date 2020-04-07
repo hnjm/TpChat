@@ -1,12 +1,12 @@
 ﻿using Gecko;
 using System;
 using System.Windows.Forms;
-using TpChat.Controllers.Login;
 
 namespace TpChat.Views
 {
     public partial class Login : Form
     {
+        private bool firstSubmit = true;
         public Login()
         {
             InitializeComponent();
@@ -15,7 +15,7 @@ namespace TpChat.Views
         }
         private void Login_Load(object sender, EventArgs e)
         {
-            this.browser.Navigate(Data.URL);
+            this.browser.Navigate(Controllers.Login.Data.URL);
         }
 
         private void chkboxShowPass_CheckedChanged(object sender, EventArgs e)
@@ -29,42 +29,22 @@ namespace TpChat.Views
         private void btnJoin_Click(object sender, EventArgs e)
         {
             /* TODO */
-            // set a loader for loading the website before displaying controllers.
-            // Handle Inner Alert - for example: the member is online OR wrong password .etc.
+            // loader: for loading the website before displaying controllers.
+            // loader: when clicking join button
+            // Handle: Inner Alert - for example: the member is online OR wrong password .etc.
+            // Handle: Pop-up windows
+            // Clean : create functions in Assistant for clearing this scope.
 
             if (this.txtboxUsername.Text != string.Empty)
             {
-                var document = browser.Document;
-
-                if (Data.FirstSubmit)
-                {
-                    (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
-                        .Value = txtboxUsername.Text;
-
-                    (document.GetElementById(Data.ID.GENDER) as Gecko.DOM.GeckoSelectElement)
-                        .SelectedIndex = this.cmbxGender.SelectedIndex;
-
-                    (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
-                        .Click();
-
-                    Data.FirstSubmit = false;
-                    Phase2();
-                }
+                if (firstSubmit)
+                    this.FirstSubmit();
                 // NOTE: 
                 // + Gender is not available now (so it's disabled in Phase2()). 
                 // + hidden feature for admins may appear here.
                 else
-                {
-                    (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
-                        .Value = this.txtboxPassword.Text;
-
-                    (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
-                        .Value = txtboxUsername.Text;
-
-                    (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
-                        .Click();
-                }
-                Assistant.CheckLogStatus(document);
+                    this.SecondSubmit();
+                this.CheckLogStatus();
             }
             else
                 MessageBox.Show("نام کاربری خود را وارد کنید");
