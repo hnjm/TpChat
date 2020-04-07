@@ -16,8 +16,8 @@ namespace TpChat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            new Views.Login().Show();
-            Application.Run(new Views.Home());
+            new Views.Login().ShowDialog();
+            //Application.Run(new Views.Home());
         }
     }
 }

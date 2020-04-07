@@ -82,6 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Enabled = false;
             this.label2.Font = new System.Drawing.Font("B Mitra", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label2.Location = new System.Drawing.Point(282, 58);
             this.label2.Name = "label2";
@@ -92,6 +93,7 @@
             // 
             // txtboxPassword
             // 
+            this.txtboxPassword.Enabled = false;
             this.txtboxPassword.Font = new System.Drawing.Font("Arial", 10F);
             this.txtboxPassword.Location = new System.Drawing.Point(82, 54);
             this.txtboxPassword.Name = "txtboxPassword";
@@ -103,6 +105,7 @@
             // chkboxShowPass
             // 
             this.chkboxShowPass.AutoSize = true;
+            this.chkboxShowPass.Enabled = false;
             this.chkboxShowPass.Font = new System.Drawing.Font("B Mitra", 11F);
             this.chkboxShowPass.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.chkboxShowPass.Location = new System.Drawing.Point(14, 53);

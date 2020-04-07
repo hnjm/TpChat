@@ -35,6 +35,13 @@ namespace TpChat.Views
                 MessageBox.Show("نام کاربری خود را وارد کنید");
         }
 
+        private void EnablePass()
+        {
+            this.label2.Enabled = true;
+            this.chkboxShowPass.Enabled = true;
+            this.txtboxPassword.Enabled = true;
+        }
+
         private void btnHelp_Click(object sender, EventArgs e)
         {
 
