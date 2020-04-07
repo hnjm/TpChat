@@ -30,13 +30,14 @@ namespace TpChat.Views
         {
             /* TODO */
             // set a loader for loading the website before displaying controllers.
+            // Handle Inner Alert - for example: the member is online OR wrong password .etc.
 
             if (this.txtboxUsername.Text != string.Empty)
             {
+                var document = browser.Document;
+
                 if (Data.FirstSubmit)
                 {
-                    var document = browser.Document;
-
                     (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
                         .Value = txtboxUsername.Text;
 
@@ -45,13 +46,25 @@ namespace TpChat.Views
 
                     (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
                         .Click();
+
+                    Data.FirstSubmit = false;
+                    Phase2();
                 }
-                // Second Submit
+                // NOTE: 
+                // + Gender is not available now (so it's disabled in Phase2()). 
+                // + hidden feature for admins may appear here.
                 else
                 {
-                    Phase2();
-                    // ..
+                    (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
+                        .Value = this.txtboxPassword.Text;
+
+                    (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
+                        .Value = txtboxUsername.Text;
+
+                    (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
+                        .Click();
                 }
+                Assistant.CheckLogStatus(document);
             }
             else
                 MessageBox.Show("نام کاربری خود را وارد کنید");
@@ -70,6 +83,10 @@ namespace TpChat.Views
 
         }
 
-        
+        private void UserPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                this.btnJoin.PerformClick();
+        }
     }
 }

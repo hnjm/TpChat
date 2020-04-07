@@ -8,7 +8,7 @@ namespace TpChat.Controllers.Login
 {
     public static class Assistant
     {
-        public static void CheckLogStatus(Gecko.GeckoHtmlElementCollection geckoHtmlElements)
+        public static void CheckLogStatus(Gecko.GeckoDocument document)
         {
             //Data.Joined;
         }

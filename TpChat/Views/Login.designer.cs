@@ -47,6 +47,7 @@
             this.txtboxUsername.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtboxUsername.Size = new System.Drawing.Size(194, 33);
             this.txtboxUsername.TabIndex = 1;
+            this.txtboxUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserPass_KeyDown);
             // 
             // label1
             // 
@@ -101,6 +102,7 @@
             this.txtboxPassword.Size = new System.Drawing.Size(194, 27);
             this.txtboxPassword.TabIndex = 2;
             this.txtboxPassword.UseSystemPasswordChar = true;
+            this.txtboxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserPass_KeyDown);
             // 
             // chkboxShowPass
             // 
@@ -149,7 +151,7 @@
             this.browser.FrameEventsPropagateToMainWindow = false;
             this.browser.Location = new System.Drawing.Point(12, 150);
             this.browser.Name = "browser";
-            this.browser.Size = new System.Drawing.Size(362, 260);
+            this.browser.Size = new System.Drawing.Size(849, 480);
             this.browser.TabIndex = 1003;
             this.browser.UseHttpActivityObserver = false;
             // 
@@ -157,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 422);
+            this.ClientSize = new System.Drawing.Size(873, 642);
             this.Controls.Add(this.browser);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnJoin);
