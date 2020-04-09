@@ -48,7 +48,6 @@
             this.txtboxUsername.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtboxUsername.Size = new System.Drawing.Size(194, 33);
             this.txtboxUsername.TabIndex = 1;
-            this.txtboxUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserPass_KeyDown);
             // 
             // label1
             // 
@@ -101,7 +100,6 @@
             this.txtboxPassword.Size = new System.Drawing.Size(194, 27);
             this.txtboxPassword.TabIndex = 2;
             this.txtboxPassword.UseSystemPasswordChar = true;
-            this.txtboxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserPass_KeyDown);
             // 
             // chkboxShowPass
             // 
@@ -170,6 +168,7 @@
             // 
             // Login
             // 
+            this.AcceptButton = this.btnJoin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 642);

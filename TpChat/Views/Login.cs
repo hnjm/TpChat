@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpChat.Controllers.Login;
 
+// TODO
+/*
+ * Set local storage for check boxes & inputs.
+*/
+
 namespace TpChat.Views
 {
     public partial class Login : Form
@@ -63,23 +68,6 @@ namespace TpChat.Views
             //    if (!firstSubmit)
             //    MessageBox.Show("Something went wrong. failed to login.");
         }
-        public void FirstSubmit()
-        {
-            var document = browser.Document;
-            if (document.GetElementById(Data.ID.USERNAME) != null)
-            {
-                (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
-                        .Value = txtboxUsername.Text;
-
-                (document.GetElementById(Data.ID.GENDER) as Gecko.DOM.GeckoSelectElement)
-                    .SelectedIndex = this.cmbxGender.SelectedIndex;
-
-                (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
-                    .Click();
-            }
-            else
-                Application.Restart();
-        }
         public void SecondSubmit()
         {
             var document = browser.Document;
@@ -94,11 +82,34 @@ namespace TpChat.Views
                 .Click();
         }
 
-        private void GuestLogin() { }
-        private void MemberLogin() { }
+        private void GuestLogin()
+        {
+            var document = browser.Document;
 
-        private void Loader_on() { this.Enabled = false; }
-        private void Loader_off() { this.Enabled = true; }
+            (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
+                .Value = this.txtboxUsername.Text;
+            (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
+                .Click();
+
+            if (IsPassHidden())
+            {
+                MessageBox.Show("با موفقیت وارد چت روم شدید");
+                // this.Close();
+                // Application.Run(new Home());
+            }
+            else
+            {
+                string error = "این نام کاربری ثبت نام شده است لذا نمیتواند به عنوان مهمان وارد شود";
+                MessageBox.Show(error, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void MemberLogin()
+        {
+
+        }
+
+        private void Loader_on() { this.UseWaitCursor = true; }
+        private void Loader_off() { this.UseWaitCursor = false; }
 
         private void ShowPassForm()
         {
@@ -133,12 +144,6 @@ namespace TpChat.Views
         private void btnHelp_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void UserPass_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                this.btnJoin.PerformClick();
         }
 
         private void chkboxGuest_CheckedChanged(object sender, EventArgs e)
