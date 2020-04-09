@@ -17,7 +17,7 @@ namespace TpChat.Views
     public partial class Login : Form
     {
         private bool GuestMode = false;
-        private Timer timer = new Timer();
+        private Timer timer;
         public Login()
         {
             InitializeComponent();
@@ -59,58 +59,33 @@ namespace TpChat.Views
 
         private void CheckJoinStatus()
         {
-            //if (browser.Document.GetElementById("message") != null)
-            //{
-            //    Data.Joined = true;
-            //    MessageBox.Show($"Joined");
-            //    // this.Close();
-            //    // Export Cookie (or browser)
-            //}
-            //else
-            //    if (!firstSubmit)
-            //    MessageBox.Show("Something went wrong. failed to login.");
-        }
-        private void SecondSubmit()
-        {
-            var document = browser.Document;
-
-            (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
-                        .Value = this.txtboxPassword.Text;
-
-            (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
-                .Value = txtboxUsername.Text;
-
-            (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
-                .Click();
+            if (browser.Document.GetElementById("message") != null)
+                Data.Joined = true;
         }
 
-        private uint ElapsedTime;
         private void GuestCheckLog(object sender, EventArgs e)
         {
+            timer.Stop();
+            timer.Dispose();
             CheckJoinStatus();
-            if (this.ElapsedTime < 5000)
+            if (Data.Joined)
             {
-                if (Data.Joined)
+                timer.Stop();
+                MessageBox.Show("با موفقیت وارد چت روم شدید");
+                // this.Close();
+                // Application.Run(new Home());
+            }
+            else if (browser.Document.GetElementById(Data.ID.PASSWORD_PARENT) != null)
+            {
+                if (!IsPassHidden())
                 {
                     timer.Stop();
-                    MessageBox.Show("با موفقیت وارد چت روم شدید");
-                    // this.Close();
-                    // Application.Run(new Home());
+                    MessageBox.Show("این نام کاربری ثبت نام شده است", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                //else if (!IsPassHidden())
-                //{
-                //    timer.Stop();
-                //    MessageBox.Show("این نام کاربری ثبت نام شده است", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
-                else
-                    this.ElapsedTime += 200;
             }
             else
             {
-                timer.Stop();
-                MessageBox.Show("اینترنت خود را چک کنید", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                Application.Exit();
+                MessageBox.Show("Connection error");
             }
         }
         private void GuestLogin()
@@ -120,12 +95,13 @@ namespace TpChat.Views
                 .Value = this.txtboxUsername.Text;
             (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
                 .Click();
-            //
-            this.ElapsedTime = 0;
+
+            this.timer = new Timer();
             this.timer.Tick += GuestCheckLog;
-            this.timer.Interval = 200;
+            this.timer.Interval = 1000;
             this.timer.Start();
         }
+
         private void MemberLogin()
         {
 
@@ -188,13 +164,13 @@ namespace TpChat.Views
                 this.txtboxPassword.UseSystemPasswordChar = true;
         }
 
-        private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
-        {
-            this.Loader_off();
-        }
         private void browser_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
         {
             this.Loader_on();
+        }
+        private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
+        {
+            this.Loader_off();
         }
     }
 }
