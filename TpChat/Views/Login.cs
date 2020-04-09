@@ -20,8 +20,8 @@ namespace TpChat.Views
         }
         private void Login_Load(object sender, EventArgs e) { }
 
-        #region Helpers
-        public static string getBetween(string strSource, string strStart, string strEnd)
+        #region Statics
+        private static string GetBetween(string strSource, string strStart, string strEnd)
         {
             int Start, End;
             if (strSource.Contains(strStart) && strSource.Contains(strEnd))
@@ -35,6 +35,20 @@ namespace TpChat.Views
                 return "";
             }
         }
+        #endregion
+
+        #region Helpers
+        public bool IsPassHidden()
+        {
+            string output;
+            var parent = this.browser.Document.GetElementById(Data.ID.PASSWORD_PARENT)
+                as GeckoHtmlElement;
+
+            output = parent.GetAttribute("style");
+            output = GetBetween(output, ":", ";");
+            output = output.ToLower();
+            return output.Contains("none");
+    }
 
         public void CheckJoinStatus()
         {
@@ -105,17 +119,7 @@ namespace TpChat.Views
             Loader_on();
             if (this.txtboxUsername.Text.Length > 1)
             {
-                string output;
-                var parent = browser.Document.GetElementById(Data.ID.PASSWORD_PARENT) 
-                    as GeckoHtmlElement;
-
-                output = parent.GetAttribute("style");
-                output = getBetween(output, ":", ";");
-                output = output.ToLower();
-                
-                MessageBox.Show($"Password is hidden: {output.Contains("none")}");
-
-                //
+                MessageBox.Show("Test");
 
                 if (GuestMode)
                     GuestLogin();
