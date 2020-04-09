@@ -1,5 +1,6 @@
 ﻿using Gecko;
 using Gecko.JQuery;
+using Gecko.WebIDL;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace TpChat.Views
     public partial class Login : Form
     {
         private bool GuestMode = false;
+        private Timer timer = new Timer();
         public Login()
         {
             InitializeComponent();
@@ -43,7 +45,7 @@ namespace TpChat.Views
         #endregion
 
         #region Helpers
-        public bool IsPassHidden()
+        private bool IsPassHidden()
         {
             string output;
             var parent = this.browser.Document.GetElementById(Data.ID.PASSWORD_PARENT)
@@ -53,9 +55,9 @@ namespace TpChat.Views
             output = GetBetween(output, ":", ";");
             output = output.ToLower();
             return output.Contains("none");
-    }
+        }
 
-        public void CheckJoinStatus()
+        private void CheckJoinStatus()
         {
             //if (browser.Document.GetElementById("message") != null)
             //{
@@ -68,7 +70,7 @@ namespace TpChat.Views
             //    if (!firstSubmit)
             //    MessageBox.Show("Something went wrong. failed to login.");
         }
-        public void SecondSubmit()
+        private void SecondSubmit()
         {
             var document = browser.Document;
 
@@ -82,26 +84,47 @@ namespace TpChat.Views
                 .Click();
         }
 
+        private uint ElapsedTime;
+        private void GuestCheckLog(object sender, EventArgs e)
+        {
+            CheckJoinStatus();
+            if (this.ElapsedTime < 5000)
+            {
+                if (Data.Joined)
+                {
+                    timer.Stop();
+                    MessageBox.Show("با موفقیت وارد چت روم شدید");
+                    // this.Close();
+                    // Application.Run(new Home());
+                }
+                //else if (!IsPassHidden())
+                //{
+                //    timer.Stop();
+                //    MessageBox.Show("این نام کاربری ثبت نام شده است", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                else
+                    this.ElapsedTime += 200;
+            }
+            else
+            {
+                timer.Stop();
+                MessageBox.Show("اینترنت خود را چک کنید", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                Application.Exit();
+            }
+        }
         private void GuestLogin()
         {
             var document = browser.Document;
-
             (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
                 .Value = this.txtboxUsername.Text;
             (document.GetElementById(Data.ID.BUTTON) as Gecko.DOM.GeckoInputElement)
                 .Click();
-
-            if (IsPassHidden())
-            {
-                MessageBox.Show("با موفقیت وارد چت روم شدید");
-                // this.Close();
-                // Application.Run(new Home());
-            }
-            else
-            {
-                string error = "این نام کاربری ثبت نام شده است لذا نمیتواند به عنوان مهمان وارد شود";
-                MessageBox.Show(error, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //
+            this.ElapsedTime = 0;
+            this.timer.Tick += GuestCheckLog;
+            this.timer.Interval = 200;
+            this.timer.Start();
         }
         private void MemberLogin()
         {
@@ -130,8 +153,6 @@ namespace TpChat.Views
             Loader_on();
             if (this.txtboxUsername.Text.Length > 1)
             {
-                MessageBox.Show("Test");
-
                 if (GuestMode)
                     GuestLogin();
                 else
