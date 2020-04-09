@@ -7,19 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpChat.Controllers.Login;
 
 namespace TpChat.Views
 {
     public partial class Home : Form
     {
-        Gecko.GeckoWebBrowser browser;
-        public Home(Gecko.GeckoWebBrowser browser)
+        public Home()
         {
             InitializeComponent();
-            //
-            this.browser = browser;
-            browser.Dock = DockStyle.Fill;
-            browser.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            browser.Navigate(Data.URL + "chat");
         }
     }
 }

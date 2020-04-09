@@ -18,6 +18,7 @@ namespace TpChat.Controllers.Login
             public const string PASSWORD = "password";
             public const string GENDER = "gender";
             public const string BUTTON = "submit_button";
+            public const string PASSWORD_PARENT = "lay_pw";
             // there is also this feature -hide- for admins:
             // <input name="hide" value="1" type="checkbox">
         }
