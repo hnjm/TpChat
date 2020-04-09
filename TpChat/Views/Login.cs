@@ -65,12 +65,11 @@ namespace TpChat.Views
 
         private void GuestCheckLog(object sender, EventArgs e)
         {
-            timer.Stop();
-            timer.Dispose();
+            timer.Enabled = false;
             CheckJoinStatus();
             if (Data.Joined)
             {
-                timer.Stop();
+                timer.Enabled = false;
                 MessageBox.Show("با موفقیت وارد چت روم شدید");
                 // this.Close();
                 // Application.Run(new Home());
@@ -79,14 +78,12 @@ namespace TpChat.Views
             {
                 if (!IsPassHidden())
                 {
-                    timer.Stop();
+                    timer.Enabled = false;
                     MessageBox.Show("این نام کاربری ثبت نام شده است", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
-            {
-                MessageBox.Show("Connection error");
-            }
+                timer.Enabled = true;
         }
         private void GuestLogin()
         {
@@ -99,7 +96,7 @@ namespace TpChat.Views
             this.timer = new Timer();
             this.timer.Tick += GuestCheckLog;
             this.timer.Interval = 1000;
-            this.timer.Start();
+            this.timer.Enabled = true;
         }
 
         private void MemberLogin()
