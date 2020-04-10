@@ -23,6 +23,7 @@ namespace TpChat.Views
             InitializeComponent();
             this.cmbxGender.SelectedItem = cmbxGender.Items[0];
             Xpcom.Initialize("Firefox");
+            this.browser.CreateWindow += Browser_CreateWindow;
             this.browser.Navigate(Data.URL);
         }
         private void Login_Load(object sender, EventArgs e) { }
@@ -82,8 +83,6 @@ namespace TpChat.Views
                     MessageBox.Show("این نام کاربری ثبت نام شده است", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else
-                timer.Enabled = true;
         }
         private void GuestLogin()
         {
@@ -161,6 +160,7 @@ namespace TpChat.Views
                 this.txtboxPassword.UseSystemPasswordChar = true;
         }
 
+        private void Browser_CreateWindow(object sender, GeckoCreateWindowEventArgs e) => e.Cancel = true;
         private void browser_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
         {
             this.Loader_on();
@@ -168,6 +168,9 @@ namespace TpChat.Views
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
             this.Loader_off();
+            CheckJoinStatus();
+            if (Data.Joined)
+                MessageBox.Show("شما وارد چت روم شدید");
         }
     }
 }
