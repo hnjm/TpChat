@@ -22,5 +22,9 @@ namespace TpChat.Controllers.Login
             // there is also this feature -hide- for admins:
             // <input name="hide" value="1" type="checkbox">
         }
+        public struct CLASS
+        {
+            public const string MSG_Fetch = "msgAlert_content";
+        }
     }
 }

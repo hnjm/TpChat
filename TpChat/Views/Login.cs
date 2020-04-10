@@ -29,6 +29,32 @@ namespace TpChat.Views
         private void Login_Load(object sender, EventArgs e) { }
 
         #region Statics
+        private void JSval(string code, bool close = false)
+        {
+            string output;
+            using (AutoJSContext context = new AutoJSContext(browser.Window))
+            {
+                string result;
+                try
+                {
+                    context.EvaluateScript(code, out result);
+                }
+                catch (GeckoException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (close)
+                    {
+                        this.Close();
+                        Application.Exit();
+                    }
+                }
+            }
+            //browser.Navigate($"javascript:void({code})");
+            //Application.DoEvents();
+        }
+        private bool ValidatedUsernameChars() => txtboxUsername.Text.Length > 1;
+        private string FetchMsg() => browser.Document.GetElementsByClassName(Data.CLASS.MSG_Fetch)[0].TextContent;
+        //
         private static string GetBetween(string strSource, string strStart, string strEnd)
         {
             int Start, End;
@@ -123,15 +149,17 @@ namespace TpChat.Views
         private void btnJoin_Click(object sender, EventArgs e)
         {
             Loader_on();
-            if (this.txtboxUsername.Text.Length > 1)
-            {
-                if (GuestMode)
-                    GuestLogin();
-                else
-                    MemberLogin();
-            }
-            else
-                MessageBox.Show("حداقل طول نام کاربری ۲ حرف می باشد");
+
+            JSval("");
+            //if (ValidatedUsernameChars())
+            //{
+            //    if (GuestMode)
+            //        GuestLogin();
+            //    else
+            //        MemberLogin();
+            //}
+            //else
+            //    MessageBox.Show("حداقل طول نام کاربری ۲ حرف می باشد");
             Loader_off();
         }
         private void btnHelp_Click(object sender, EventArgs e)
