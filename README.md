@@ -1,3 +1,5 @@
 # TpChat
 
-A windows client application for the chatrooms made by [TarhPardaz](https://www.tarhpardaz.ir) on web
+Windows client application for the chatrooms designed by [TarhPardaz](https://www.tarhpardaz.ir) on web.
+
+The website codes are unbelievably cluttered and untidy.
