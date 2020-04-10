@@ -82,6 +82,9 @@ namespace TpChat.Views
             // JS: in login() dont change $.msgAlert() functions.
             // C#: use FetchMsg() for fetching the message's text. (will be closed automatically)
             // Then create Forms for handling the Message.
+            // NOTE: login also returns a boolean, it could be the joined or not? idk ,
+            // for further updates you could check that out too.
+            // By the way, alert does'nt work in $.ajax() scope. must use $.msgAlert().
             JSval(@"
 function login(e) { // e = this = Window
     var t = e.username.value;
