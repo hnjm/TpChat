@@ -1,5 +1,4 @@
 # TpChat
 
-Windows client application for the chatrooms designed by [TarhPardaz](https://www.tarhpardaz.ir) on web.
-
-The website codes are unbelievably cluttered and untidy.
+###### Windows client application for the chatrooms designed by [TarhPardaz](https://www.tarhpardaz.ir) on web 
+> Despite the fact that the websites are definitely not prepared to be used this way (they just wanted to get the job done, not caring about other developers)
