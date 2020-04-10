@@ -49,6 +49,7 @@ namespace TpChat.Views
                     }
                 }
             }
+
             //browser.Navigate($"javascript:void({code})");
             //Application.DoEvents();
         }

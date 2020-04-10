@@ -12,6 +12,8 @@ namespace TpChat.Controllers.Login
         public static bool Joined = false;
 
         public const string URL = "http://www.persiann24.tk/";
+        public const string URL_banned = "http://www.persiann24.tk/benned";
+
         public struct ID
         {
             public const string USERNAME = "username";

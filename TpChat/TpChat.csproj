@@ -55,6 +55,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Login\Data.cs" />
+    <Compile Include="iTool-cs\iTool\Array.cs" />
+    <Compile Include="iTool-cs\iTool\Network\GeckoFX.cs" />
+    <Compile Include="iTool-cs\iTool\Math\Geometry.cs" />
+    <Compile Include="iTool-cs\iTool\Network\Cookie.cs" />
+    <Compile Include="iTool-cs\iTool\Network\Http.cs" />
+    <Compile Include="iTool-cs\iTool\Network\Ping.cs" />
+    <Compile Include="iTool-cs\iTool\Network\Url.cs" />
+    <Compile Include="iTool-cs\iTool\Number.cs" />
+    <Compile Include="iTool-cs\iTool\String.cs" />
+    <Compile Include="iTool-cs\iTool\Winform\Checkbox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\FilteredPromptService.cs" />
@@ -85,6 +95,51 @@
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="iTool-cs\.git\config" />
+    <None Include="iTool-cs\.git\description" />
+    <None Include="iTool-cs\.git\HEAD" />
+    <None Include="iTool-cs\.git\hooks\applypatch-msg.sample" />
+    <None Include="iTool-cs\.git\hooks\commit-msg.sample" />
+    <None Include="iTool-cs\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="iTool-cs\.git\hooks\post-update.sample" />
+    <None Include="iTool-cs\.git\hooks\pre-applypatch.sample" />
+    <None Include="iTool-cs\.git\hooks\pre-commit.sample" />
+    <None Include="iTool-cs\.git\hooks\pre-merge-commit.sample" />
+    <None Include="iTool-cs\.git\hooks\pre-push.sample" />
+    <None Include="iTool-cs\.git\hooks\pre-rebase.sample" />
+    <None Include="iTool-cs\.git\hooks\pre-receive.sample" />
+    <None Include="iTool-cs\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="iTool-cs\.git\hooks\update.sample" />
+    <None Include="iTool-cs\.git\index" />
+    <None Include="iTool-cs\.git\info\exclude" />
+    <None Include="iTool-cs\.git\logs\HEAD" />
+    <None Include="iTool-cs\.git\logs\refs\heads\master" />
+    <None Include="iTool-cs\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="iTool-cs\.git\objects\01\94cbdde21d1e9f5968d3b823d26044a377b651" />
+    <None Include="iTool-cs\.git\objects\06\b42e3529f4f6259615e549841e51a72f10a86e" />
+    <None Include="iTool-cs\.git\objects\1d\b1e1293f98ca9d7a952bfcaee36e9a8ca3502d" />
+    <None Include="iTool-cs\.git\objects\25\652a17e2989341c0fe5b193bb0a5e00a1cd6a9" />
+    <None Include="iTool-cs\.git\objects\27\7b72663aebed0d6a53568095c49e6be1b0a624" />
+    <None Include="iTool-cs\.git\objects\45\8cf47abbcd1c2b3a7691175c3a2fc9655f5cc1" />
+    <None Include="iTool-cs\.git\objects\53\b784ca6f569bd7961d1d6743b7a0a83f797416" />
+    <None Include="iTool-cs\.git\objects\5a\e7d7ac91be6ab009043b318dfc3f7563e471ee" />
+    <None Include="iTool-cs\.git\objects\6c\5368eb23eacce14cf64d4eb9f22dfeeebb275b" />
+    <None Include="iTool-cs\.git\objects\89\ac847b13994f232addeef6c216e4de87702e83" />
+    <None Include="iTool-cs\.git\objects\9d\6dc6f2cdb17ad9aeee976215d6e5ec92412202" />
+    <None Include="iTool-cs\.git\objects\af\2cdd9d9ed5940b1b8f48668475cfea22290aaa" />
+    <None Include="iTool-cs\.git\objects\b0\d0a6fe910fb9a1b7f5481a204da6ba460d8831" />
+    <None Include="iTool-cs\.git\objects\c9\b602f54b4f6bbc7e32feaf7ad99c8230da2455" />
+    <None Include="iTool-cs\.git\objects\d1\8ef38668ee92f6f1d6bbc4e83b7290a48a3432" />
+    <None Include="iTool-cs\.git\objects\d4\437cee739df10ce22bfb4f0156499f418e4d40" />
+    <None Include="iTool-cs\.git\objects\d6\d6f1c0a7fe45d0a78fab22800a80bc00d3b5c2" />
+    <None Include="iTool-cs\.git\objects\ef\d785c94dc8899196b45d77340bfa91b39fa2f4" />
+    <None Include="iTool-cs\.git\objects\f0\56ca0413b4a5655f449d42d91e535861ed9eb1" />
+    <None Include="iTool-cs\.git\objects\f2\88702d2fa16d3cdf0035b15a9fcbc552cd88e7" />
+    <None Include="iTool-cs\.git\packed-refs" />
+    <None Include="iTool-cs\.git\refs\heads\master" />
+    <None Include="iTool-cs\.git\refs\remotes\origin\HEAD" />
+    <None Include="iTool-cs\LICENSE" />
+    <None Include="iTool-cs\README.md" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -96,7 +151,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="iTool-cs\.git\objects\info\" />
+    <Folder Include="iTool-cs\.git\objects\pack\" />
+    <Folder Include="iTool-cs\.git\refs\tags\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Geckofx45.45.0.34\build\Geckofx45.targets" Condition="Exists('..\packages\Geckofx45.45.0.34\build\Geckofx45.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
