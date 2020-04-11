@@ -116,7 +116,7 @@ namespace TpChat.Views
 
             JSval("login(this)");
             //if (JSval("this['rec_registerated'] === true") == "true")
-            MessageBox.Show("Result: " + JSval("recog"));
+            MessageBox.Show("Result: " + JSval("recog.IsReg"));
 
         }
 

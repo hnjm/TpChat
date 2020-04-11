@@ -75,8 +75,9 @@ function login(e) {
                         case 'capacity':
                             $.msgAlert({ text: 'ظرفیت چت روم پر است' });
                             break;
-                        // Member Step 2 of loging in.
+                        // Member Loging : Step 2 
                         case 'running':
+                            recog.IsReg = true;
                             document.getElementById('lay_pw').style.display = 'block',
                                 document.getElementById('password').select(),
                                 document.getElementById('lay_gender').style.display = 'none';
