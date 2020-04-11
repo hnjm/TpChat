@@ -108,46 +108,13 @@ namespace TpChat.Views
                 Data.Joined = true;
         }
 
-        private uint timerInvoked;
-        private void GuestCheckLog(object sender, EventArgs e)
-        {
-            void destroyTimer()
-            {
-                timer.Enabled = false;
-                timer.Dispose();
-            }
-            if (timerInvoked < 15)
-            {
-                if (browser.Document.GetElementById(Data.ID.PASSWORD_PARENT) != null)
-                {
-                    if (!IsPassHidden())
-                    {
-                        destroyTimer();
-                        MessageBox.Show("این نام کاربری ثبت نام شده است", "خطا",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                timerInvoked++;
-            }
-            else
-            {
-                destroyTimer();
-                MessageBox.Show("Timer destroyed");
-            }
-        }
         private void GuestLogin()
         {
             var document = browser.Document;
             (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
                 .Value = this.txtboxUsername.Text;
-            //
+
             JSval("login(this)");
-            //
-            timerInvoked = 0;
-            timer = new Timer();
-            timer.Tick += GuestCheckLog;
-            timer.Interval = 200;
-            timer.Enabled = true;
         }
 
         private void MemberLogin()
@@ -221,7 +188,10 @@ namespace TpChat.Views
             this.Loader_on();
             bool joined = e.Uri.LocalPath.ToLower().Contains("chat");
             if (joined)
+            {
+                destroyTimer();
                 MessageBox.Show("Navigating to the chat room");
+            }
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
