@@ -56,8 +56,9 @@ namespace TpChat.Views
         private bool ValidatedUsernameChars() => txtboxUsername.Text.Length > 1;
         private string FetchMsg()
         {
+            var msg = browser.Document.GetElementsByClassName(Data.CLASS.MSG_Fetch)[0].TextContent;
             JSval("$.msgAlert.close()");
-            return browser.Document.GetElementsByClassName(Data.CLASS.MSG_Fetch)[0].TextContent;
+            return msg;
         }
         //
         private static string GetBetween(string strSource, string strStart, string strEnd)
@@ -239,6 +240,7 @@ function login(e) { // e = this = Window
             this.txtboxPassword.Enabled = false;
         }
         #endregion
+
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
