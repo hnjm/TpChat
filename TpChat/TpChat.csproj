@@ -67,7 +67,6 @@
     <Compile Include="iTool-cs\iTool\Winform\Checkbox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\FilteredPromptService.cs" />
     <Compile Include="Views\Home.cs">
       <SubType>Form</SubType>
     </Compile>
