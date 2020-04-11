@@ -219,14 +219,14 @@ namespace TpChat.Views
         private void browser_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
         {
             this.Loader_on();
+            bool joined = e.Uri.LocalPath.ToLower().Contains("chat");
+            if (joined)
+                MessageBox.Show("Navigating to the chat room");
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
             this.Loader_off();
             this.InitLoginGuest();
-            CheckJoinStatus();
-            if (Data.Joined)
-                MessageBox.Show("شما وارد چت روم شدید");
         }
     }
 }
