@@ -29,150 +29,174 @@ namespace TpChat.Controllers.Login
             public const string MSG_Fetch = "msgAlert_content";
         }
         public const string LoginFun_guest = @"
-function login(e) { // e = this = Window
+function login(e) {
     1 == firstlogin && ($('#password').val(''), firstlogin = !1);
     var t = e.username.value;
     return '' == t || ' ' == t ?
-        (alert({ text: 'لطفا نام خود را وارد کنید' }), !1) :
-        /* Start processing username */
-        ($('#ajax_loader').html(
-            '<center><img height=\'30\' width=\'30\' src=\'/theme/microblog/images/ajax-loader.gif\'></center>'),
+        ($.msgAlert({
+            text: 'لطفا نام خود را وارد کنید'
+        }), !1) :
+        ($('#ajax_loader').html('<center><img height=\'30\' width=\'30\' src=\'/theme/microblog/images/ajax-loader.gif\'></center>'),
             $.ajax({
                 type: 'POST',
                 url: url('ajax/login/multi'),
                 data: $('#form').serialize(),
                 success: function (e) {
                     switch (e) {
+                        /* case 'captcha':$.msgAlert({text: 'شما ربات تشخیص داده شدید لطفا کد تصویر امنیتی را وارد کنید'});document.getElementById('lay_captcha').style.display = 'block';break;*/
+
+                        // admins
                         case 'admins':
                             alert('درجه دار گرامی توجه کنید : رمز شما ضعیف و نا امن است پسورد خود را پس از ورود به چت روم از تنظمیات تغییر دهید تا این پیام براتون ارسال نشود. پسورد شما باید حداقل 7 کارکتر و شامل حروف و اعداد و حداقل یکی از کاراکتر های ( &,#,$ , % , @ )  باشد . درصورت عدم گذاشتن رمز قوی مسئولیت مشکلات بعدی به عهده شما می باشد . با تشکر');
                             top.location.href = url($chat_prefix);
                             break;
+                        // admins mobile - not important
                         case 'adminsmob':
                             alert('درجه دار گرامی توجه کنید : رمز شما ضعیف و نا امن است پسورد خود را پس از ورود به چت روم از تنظمیات تغییر دهید تا این پیام براتون ارسال نشود. پسورد شما باید حداقل 7 کارکتر و شامل حروف و اعداد و حداقل یکی از کاراکتر های ( &,#,$ , % , @ )  باشد . درصورت عدم گذاشتن رمز قوی مسئولیت مشکلات بعدی به عهده شما می باشد . با تشکر');
                             top.location.href = url('mobile');
                             break;
+                        // mobile - not important
                         case 'mobile':
                             top.location.href = url('mobile');
                             break;
-                        /* case 'captcha':alert({text: 'شما ربات تشخیص داده شدید لطفا کد تصویر امنیتی را وارد کنید'});document.getElementById('lay_captcha').style.display = 'block';break;*/
+                        // Joined
                         case 'ok':
                             top.location.href = url($chat_prefix);
                             break;
+                        // BlackListed name
                         case 'badname':
-                            alert('این نام در لیست سیاه قرار دارد');
+                            $.msgAlert({ text: 'این نام در لیست سیاه قرار دارد' });
                             break;
+                        // Banned
                         case 'benn':
-                            alert('شما اجازه ورود به چتروم را ندارید');
+                            $.msgAlert({ text: 'شما اجازه ورود به چتروم را ندارید' });
                             break;
+                        // Capacity
                         case 'capacity':
-                            alert('ظرفیت چت روم پر است');
+                            $.msgAlert({ text: 'ظرفیت چت روم پر است' });
                             break;
+                        // Member Step 2 of loging in.
                         case 'running':
                             document.getElementById('lay_pw').style.display = 'block',
                                 document.getElementById('password').select(),
                                 document.getElementById('lay_gender').style.display = 'none';
                             break;
+                        // ..
                         case 'questionError':
-                            alert('جواب سئوال امنیتی شما اشتباه است');
+                            $.msgAlert({ text: 'جواب سئوال امنیتی شما اشتباه است' });
                             break;
+                        // admins password appear
                         case 'passwh':
-                            document.getElementById('lay_pw').style.display = 'block', 
-                            document.getElementById('password').select(), 
-                            document.getElementById('lay_hide').style.display = 'block', 
-                            document.getElementById('lay_gender').style.display = 'none';
+                            document.getElementById('lay_pw').style.display = 'block', document.getElementById('password').select(), document.getElementById('lay_hide').style.display = 'block', document.getElementById('lay_gender').style.display = 'none';
                             break;
+                        // wrong pass
                         case 'pass':
-                            alert('کلمه عبور اشتباه است');
+                            $.msgAlert({ text: 'کلمه عبور اشتباه است' });
                             break;
+                        // i guess it's for Captcha
                         default:
                             try {
                                 var t = jQuery.parseJSON(e);
-                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), 
-                                $('#lay_captcha').slideUp(1e3), $('#lay_gender').slideUp(1e3), 
-                                $('#lay_hide').slideUp(1e3), 
-                                $('#lay_security_question').slideDown(1e3)) : 
-                                alert(e);
-                            } catch (n) { alert(e) }
+                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), $('#lay_captcha').slideUp(1e3), $('#lay_gender').slideUp(1e3), $('#lay_hide').slideUp(1e3), $('#lay_security_question').slideDown(1e3)) : $.msgAlert({
+                                    text: e
+                                })
+                            } catch (n) {
+                                $.msgAlert({
+                                    text: e
+                                })
+                            }
                     }
                     $('#ajax_loader').html('')
                 }
             }),
             !1
         )
-    /* End of Username processing */
-} 
+}
             ";
+
         public const string LoginFun_member = @"
-function login(e) { // e = this = Window
+function login(e) {
+    1 == firstlogin && ($('#password').val(''), firstlogin = !1);
     var t = e.username.value;
     return '' == t || ' ' == t ?
-        (alert({ text: 'لطفا نام خود را وارد کنید' }), !1) :
-        /* Start processing username */
-        ($('#ajax_loader').html(
-            '<center><img height=\'30\' width=\'30\' src=\'/theme/microblog/images/ajax-loader.gif\'></center>'),
+        ($.msgAlert({
+            text: 'لطفا نام خود را وارد کنید'
+        }), !1) :
+        ($('#ajax_loader').html('<center><img height=\'30\' width=\'30\' src=\'/theme/microblog/images/ajax-loader.gif\'></center>'),
             $.ajax({
                 type: 'POST',
                 url: url('ajax/login/multi'),
                 data: $('#form').serialize(),
                 success: function (e) {
                     switch (e) {
+                        /* case 'captcha':$.msgAlert({text: 'شما ربات تشخیص داده شدید لطفا کد تصویر امنیتی را وارد کنید'});document.getElementById('lay_captcha').style.display = 'block';break;*/
+
+                        // admins
                         case 'admins':
                             alert('درجه دار گرامی توجه کنید : رمز شما ضعیف و نا امن است پسورد خود را پس از ورود به چت روم از تنظمیات تغییر دهید تا این پیام براتون ارسال نشود. پسورد شما باید حداقل 7 کارکتر و شامل حروف و اعداد و حداقل یکی از کاراکتر های ( &,#,$ , % , @ )  باشد . درصورت عدم گذاشتن رمز قوی مسئولیت مشکلات بعدی به عهده شما می باشد . با تشکر');
                             top.location.href = url($chat_prefix);
                             break;
+                        // admins mobile - not important
                         case 'adminsmob':
                             alert('درجه دار گرامی توجه کنید : رمز شما ضعیف و نا امن است پسورد خود را پس از ورود به چت روم از تنظمیات تغییر دهید تا این پیام براتون ارسال نشود. پسورد شما باید حداقل 7 کارکتر و شامل حروف و اعداد و حداقل یکی از کاراکتر های ( &,#,$ , % , @ )  باشد . درصورت عدم گذاشتن رمز قوی مسئولیت مشکلات بعدی به عهده شما می باشد . با تشکر');
                             top.location.href = url('mobile');
                             break;
+                        // mobile - not important
                         case 'mobile':
                             top.location.href = url('mobile');
                             break;
-                        /* case 'captcha':alert({text: 'شما ربات تشخیص داده شدید لطفا کد تصویر امنیتی را وارد کنید'});document.getElementById('lay_captcha').style.display = 'block';break;*/
+                        // Joined
                         case 'ok':
                             top.location.href = url($chat_prefix);
                             break;
+                        // BlackListed name
                         case 'badname':
-                            alert('این نام در لیست سیاه قرار دارد');
+                            $.msgAlert({ text: 'این نام در لیست سیاه قرار دارد' });
                             break;
+                        // Banned
                         case 'benn':
-                            alert('شما اجازه ورود به چتروم را ندارید');
+                            $.msgAlert({ text: 'شما اجازه ورود به چتروم را ندارید' });
                             break;
+                        // Capacity
                         case 'capacity':
-                            alert('ظرفیت چت روم پر است');
+                            $.msgAlert({ text: 'ظرفیت چت روم پر است' });
                             break;
+                        // Member Step 2 of loging in.
                         case 'running':
                             document.getElementById('lay_pw').style.display = 'block',
                                 document.getElementById('password').select(),
                                 document.getElementById('lay_gender').style.display = 'none';
                             break;
+                        // ..
                         case 'questionError':
-                            alert('جواب سئوال امنیتی شما اشتباه است');
+                            $.msgAlert({ text: 'جواب سئوال امنیتی شما اشتباه است' });
                             break;
+                        // admins password appear
                         case 'passwh':
-                            document.getElementById('lay_pw').style.display = 'block', 
-                            document.getElementById('password').select(), 
-                            document.getElementById('lay_hide').style.display = 'block', 
-                            document.getElementById('lay_gender').style.display = 'none';
+                            document.getElementById('lay_pw').style.display = 'block', document.getElementById('password').select(), document.getElementById('lay_hide').style.display = 'block', document.getElementById('lay_gender').style.display = 'none';
                             break;
+                        // wrong pass
                         case 'pass':
-                            alert('کلمه عبور اشتباه است');
+                            $.msgAlert({ text: 'کلمه عبور اشتباه است' });
                             break;
+                        // i guess it's for Captcha
                         default:
                             try {
                                 var t = jQuery.parseJSON(e);
-                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), 
-                                $('#lay_captcha').slideUp(1e3), $('#lay_gender').slideUp(1e3), 
-                                $('#lay_hide').slideUp(1e3), 
-                                $('#lay_security_question').slideDown(1e3)) : 
-                                alert(e);
-                            } catch (n) { alert(e) }
+                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), $('#lay_captcha').slideUp(1e3), $('#lay_gender').slideUp(1e3), $('#lay_hide').slideUp(1e3), $('#lay_security_question').slideDown(1e3)) : $.msgAlert({
+                                    text: e
+                                })
+                            } catch (n) {
+                                $.msgAlert({
+                                    text: e
+                                })
+                            }
                     }
                     $('#ajax_loader').html('')
                 }
             }),
             !1
         )
-    /* End of Username processing */
 } 
             ";
     }

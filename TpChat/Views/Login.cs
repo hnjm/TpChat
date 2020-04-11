@@ -25,16 +25,16 @@ namespace TpChat.Views
             Xpcom.Initialize("Firefox");
             this.browser.CreateWindow += Browser_CreateWindow;
             this.browser.Navigate(Data.URL);
+            this.JSval("var recog = { }");
         }
         private void Login_Load(object sender, EventArgs e) { }
 
         #region Statics
-        private void JSval(string code, bool closeProgram = false)
+        private string JSval(string code, bool closeProgram = false)
         {
-            string output;
+            string result = string.Empty;
             using (AutoJSContext context = new AutoJSContext(browser.Window))
             {
-                string result;
                 try
                 {
                     context.EvaluateScript(code, out result);
@@ -49,7 +49,7 @@ namespace TpChat.Views
                     }
                 }
             }
-
+            return result;
             //browser.Navigate($"javascript:void({code})");
             //Application.DoEvents();
         }
@@ -115,6 +115,9 @@ namespace TpChat.Views
                 .Value = this.txtboxUsername.Text;
 
             JSval("login(this)");
+            //if (JSval("this['rec_registerated'] === true") == "true")
+            MessageBox.Show("Result: " + JSval("recog"));
+
         }
 
         private void MemberLogin()
@@ -188,10 +191,7 @@ namespace TpChat.Views
             this.Loader_on();
             bool joined = e.Uri.LocalPath.ToLower().Contains("chat");
             if (joined)
-            {
-                destroyTimer();
                 MessageBox.Show("Navigating to the chat room");
-            }
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
