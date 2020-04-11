@@ -78,7 +78,7 @@ namespace TpChat.Views
         #endregion
 
         #region Helpers
-        private void InitLoginFun()
+        private void InitLoginGuest()
         {
             // if this app survives ; for further updates =>
             // JS: in login() dont change $.msgAlert() functions.
@@ -87,80 +87,9 @@ namespace TpChat.Views
             // NOTE: login also returns a boolean, it could be the joined or not? idk ,
             // for further updates you could check that out too.
             // By the way, alert does'nt work in $.ajax() scope. must use $.msgAlert().
-            JSval(@"
-function login(e) { // e = this = Window
-    var t = e.username.value;
-    return '' == t || ' ' == t ?
-        (alert({ text: 'لطفا نام خود را وارد کنید' }), !1) :
-        /* Start processing username */
-        ($('#ajax_loader').html(
-            '<center><img height=\'30\' width=\'30\' src=\'/theme/microblog/images/ajax-loader.gif\'></center>'),
-            $.ajax({
-                type: 'POST',
-                url: url('ajax/login/multi'),
-                data: $('#form').serialize(),
-                success: function (e) {
-                    switch (e) {
-                        case 'admins':
-                            alert('درجه دار گرامی توجه کنید : رمز شما ضعیف و نا امن است پسورد خود را پس از ورود به چت روم از تنظمیات تغییر دهید تا این پیام براتون ارسال نشود. پسورد شما باید حداقل 7 کارکتر و شامل حروف و اعداد و حداقل یکی از کاراکتر های ( &,#,$ , % , @ )  باشد . درصورت عدم گذاشتن رمز قوی مسئولیت مشکلات بعدی به عهده شما می باشد . با تشکر');
-                            top.location.href = url($chat_prefix);
-                            break;
-                        case 'adminsmob':
-                            alert('درجه دار گرامی توجه کنید : رمز شما ضعیف و نا امن است پسورد خود را پس از ورود به چت روم از تنظمیات تغییر دهید تا این پیام براتون ارسال نشود. پسورد شما باید حداقل 7 کارکتر و شامل حروف و اعداد و حداقل یکی از کاراکتر های ( &,#,$ , % , @ )  باشد . درصورت عدم گذاشتن رمز قوی مسئولیت مشکلات بعدی به عهده شما می باشد . با تشکر');
-                            top.location.href = url('mobile');
-                            break;
-                        case 'mobile':
-                            top.location.href = url('mobile');
-                            break;
-                        /* case 'captcha':alert({text: 'شما ربات تشخیص داده شدید لطفا کد تصویر امنیتی را وارد کنید'});document.getElementById('lay_captcha').style.display = 'block';break;*/
-                        case 'ok':
-                            top.location.href = url($chat_prefix);
-                            break;
-                        case 'badname':
-                            alert('این نام در لیست سیاه قرار دارد');
-                            break;
-                        case 'benn':
-                            alert('شما اجازه ورود به چتروم را ندارید');
-                            break;
-                        case 'capacity':
-                            alert('ظرفیت چت روم پر است');
-                            break;
-                        case 'running':
-                            document.getElementById('lay_pw').style.display = 'block',
-                                document.getElementById('password').select(),
-                                document.getElementById('lay_gender').style.display = 'none';
-                            break;
-                        case 'questionError':
-                            alert('جواب سئوال امنیتی شما اشتباه است');
-                            break;
-                        case 'passwh':
-                            document.getElementById('lay_pw').style.display = 'block', 
-                            document.getElementById('password').select(), 
-                            document.getElementById('lay_hide').style.display = 'block', 
-                            document.getElementById('lay_gender').style.display = 'none';
-                            break;
-                        case 'pass':
-                            alert('کلمه عبور اشتباه است');
-                            break;
-                        default:
-                            try {
-                                var t = jQuery.parseJSON(e);
-                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), 
-                                $('#lay_captcha').slideUp(1e3), $('#lay_gender').slideUp(1e3), 
-                                $('#lay_hide').slideUp(1e3), 
-                                $('#lay_security_question').slideDown(1e3)) : 
-                                alert(e);
-                            } catch (n) { alert(e) }
-                    }
-                    $('#ajax_loader').html('')
-                }
-            }),
-            !1
-        )
-    /* End of Username processing */
-} 
-            ");
+            JSval(Data.LoginFun_guest);
         }
+
         private bool IsPassHidden()
         {
             string output;
@@ -187,7 +116,6 @@ function login(e) { // e = this = Window
                 timer.Enabled = false;
                 timer.Dispose();
             }
-
             if (timerInvoked < 15)
             {
                 if (browser.Document.GetElementById(Data.ID.PASSWORD_PARENT) != null)
@@ -202,7 +130,10 @@ function login(e) { // e = this = Window
                 timerInvoked++;
             }
             else
+            {
                 destroyTimer();
+                MessageBox.Show("Timer destroyed");
+            }
         }
         private void GuestLogin()
         {
@@ -292,7 +223,7 @@ function login(e) { // e = this = Window
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
             this.Loader_off();
-            this.InitLoginFun();
+            this.InitLoginGuest();
             CheckJoinStatus();
             if (Data.Joined)
                 MessageBox.Show("شما وارد چت روم شدید");
