@@ -25,7 +25,6 @@ namespace TpChat.Views
             Xpcom.Initialize("Firefox");
             this.browser.CreateWindow += Browser_CreateWindow;
             this.browser.Navigate(Data.URL);
-            this.JSval("var recog = { }");
         }
         private void Login_Load(object sender, EventArgs e) { }
 
@@ -56,9 +55,14 @@ namespace TpChat.Views
         private bool ValidatedUsernameChars() => txtboxUsername.Text.Length > 1;
         private string FetchMsg()
         {
-            var msg = browser.Document.GetElementsByClassName(Data.CLASS.MSG_Fetch)[0].TextContent;
+            var el = browser.Document.GetElementsByClassName(Data.CLASS.MSG_Fetch);
+            var msg = el.Length > 0 ? el[0].TextContent: "";
             JSval("$.msgAlert.close()");
             return msg;
+        }
+        private void FetchRecog()
+        {
+            
         }
         //
         private static string GetBetween(string strSource, string strStart, string strEnd)
@@ -114,9 +118,11 @@ namespace TpChat.Views
             (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
                 .Value = this.txtboxUsername.Text;
 
-            JSval("login(this)");
-            //if (JSval("this['rec_registerated'] === true") == "true")
-            MessageBox.Show("Result: " + JSval("recog.IsReg"));
+            browser.Navigate($"javascript:void(login(this))");
+            Application.DoEvents();
+            if (!IsPassHidden())
+                MessageBox.Show("Registered account");
+            //MessageBox.Show("Is registered: " + JSval("$.recog.isReg"));
 
         }
 
