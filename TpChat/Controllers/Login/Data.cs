@@ -98,11 +98,7 @@ function login(e) {
 function login(e) {
     1 == firstlogin && ($('#password').val(''), firstlogin = !1);
     var t = e.username.value;
-    return '' == t || ' ' == t ?
-        ($.msgAlert({
-            text: 'لطفا نام خود را وارد کنید'
-        }), !1) :
-        ($('#ajax_loader').html('<center><img height=\'30\' width=\'30\' src=\'/theme/microblog/images/ajax-loader.gif\'></center>'),
+    return ($('#ajax_loader').html('<center><img height=\'30\' width=\'30\' src=\'/theme/microblog/images/ajax-loader.gif\'></center>'),
             $.ajax({
                 type: 'POST',
                 url: url('ajax/login/multi'),
@@ -131,25 +127,22 @@ function login(e) {
                             break;
                         // BlackListed name
                         case 'badname':
-                            $.msgAlert({ text: 'این نام در لیست سیاه قرار دارد' });
                             break;
                         // Banned
                         case 'benn':
-                            $.msgAlert({ text: 'شما اجازه ورود به چتروم را ندارید' });
                             break;
                         // Capacity
                         case 'capacity':
-                            $.msgAlert({ text: 'ظرفیت چت روم پر است' });
                             break;
-                        // Member Step 2 of loging in.
+                        // Member Loging : Step 2 
                         case 'running':
+                            window.alert('Registered account !');
                             document.getElementById('lay_pw').style.display = 'block',
                                 document.getElementById('password').select(),
                                 document.getElementById('lay_gender').style.display = 'none';
                             break;
                         // ..
                         case 'questionError':
-                            $.msgAlert({ text: 'جواب سئوال امنیتی شما اشتباه است' });
                             break;
                         // admins password appear
                         case 'passwh':
@@ -157,27 +150,21 @@ function login(e) {
                             break;
                         // wrong pass
                         case 'pass':
-                            $.msgAlert({ text: 'کلمه عبور اشتباه است' });
                             break;
                         // i guess it's for Captcha
                         default:
                             try {
                                 var t = jQuery.parseJSON(e);
-                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), $('#lay_captcha').slideUp(1e3), $('#lay_gender').slideUp(1e3), $('#lay_hide').slideUp(1e3), $('#lay_security_question').slideDown(1e3)) : $.msgAlert({
-                                    text: e
-                                })
-                            } catch (n) {
-                                $.msgAlert({
-                                    text: e
-                                })
-                            }
+                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), $('#lay_captcha').slideUp(1e3), $('#lay_gender').slideUp(1e3), $('#lay_hide').slideUp(1e3), $('#lay_security_question').slideDown(1e3)) : null
+                            } catch (n) { }
                     }
                     $('#ajax_loader').html('')
                 }
             }),
             !1
         )
-} 
+}
             ";
+
     }
 }
