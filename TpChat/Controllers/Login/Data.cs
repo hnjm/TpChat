@@ -22,7 +22,9 @@
         {
             public const string MSG_Fetch = "msgAlert_content";
         }
-        public const string LoginFun_guest = @"
+        // TODO:
+        // alerts for other events.
+        public const string LoginJS_guest = @"
 function login(e) {
     1 == firstlogin && ($('#password').val(''), firstlogin = !1);
     var t = e.username.value;
@@ -94,9 +96,8 @@ function login(e) {
 }
             ";
 
-        public const string LoginFun_member = @"
+        public const string LoginJS_member = @"
 function login(e) {
-    1 == firstlogin && ($('#password').val(''), firstlogin = !1);
     var t = e.username.value;
     return ($('#ajax_loader').html('<center><img height=\'30\' width=\'30\' src=\'/theme/microblog/images/ajax-loader.gif\'></center>'),
             $.ajax({
@@ -136,7 +137,6 @@ function login(e) {
                             break;
                         // Member Loging : Step 2 
                         case 'running':
-                            window.alert('Registered account !');
                             document.getElementById('lay_pw').style.display = 'block',
                                 document.getElementById('password').select(),
                                 document.getElementById('lay_gender').style.display = 'none';

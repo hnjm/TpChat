@@ -56,13 +56,13 @@ namespace TpChat.Views
         private string FetchMsg()
         {
             var el = browser.Document.GetElementsByClassName(Data.CLASS.MSG_Fetch);
-            var msg = el.Length > 0 ? el[0].TextContent: "";
+            var msg = el.Length > 0 ? el[0].TextContent : "";
             JSval("$.msgAlert.close()");
             return msg;
         }
         private void FetchRecog()
         {
-            
+
         }
         //
         private static string GetBetween(string strSource, string strStart, string strEnd)
@@ -82,17 +82,8 @@ namespace TpChat.Views
         #endregion
 
         #region Helpers
-        private void InitLoginGuest()
-        {
-            // if this app survives ; for further updates =>
-            // JS: in login() dont change $.msgAlert() functions.
-            // C#: use FetchMsg() for fetching the message's text. (will be closed automatically)
-            // Then create Forms for handling the Message.
-            // NOTE: login also returns a boolean, it could be the joined or not? idk ,
-            // for further updates you could check that out too.
-            // By the way, alert does'nt work in $.ajax() scope. must use $.msgAlert().
-            JSval(Data.LoginFun_guest);
-        }
+        private void InitLoginGuest() => JSval(Data.LoginJS_guest);
+        private void InitLoginMember() => JSval(Data.LoginJS_member);
 
         private bool IsPassHidden()
         {
@@ -114,21 +105,35 @@ namespace TpChat.Views
 
         private void GuestLogin()
         {
+            this.InitLoginGuest();
             var document = browser.Document;
+
             (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
                 .Value = this.txtboxUsername.Text;
 
-            browser.Navigate($"javascript:void(login(this))");
-            Application.DoEvents();
-            if (!IsPassHidden())
-                MessageBox.Show("Registered account");
-            //MessageBox.Show("Is registered: " + JSval("$.recog.isReg"));
+            (document.GetElementById(Data.ID.GENDER) as Gecko.DOM.GeckoSelectElement)
+                .SelectedIndex = this.cmbxGender.SelectedIndex;
 
+            JSval("login(this)");
+            Application.DoEvents();
         }
 
         private void MemberLogin()
         {
+            this.InitLoginMember();
+            var document = browser.Document;
 
+            (document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
+                .Value = this.txtboxUsername.Text;
+
+            (document.GetElementById(Data.ID.GENDER) as Gecko.DOM.GeckoSelectElement)
+                .SelectedIndex = this.cmbxGender.SelectedIndex;
+
+            (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
+                .Value = this.txtboxPassword.Text;
+
+            JSval("login(this)");
+            Application.DoEvents();
         }
 
         private void Loader_on() { this.UseWaitCursor = true; }
@@ -202,7 +207,6 @@ namespace TpChat.Views
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
             this.Loader_off();
-            this.InitLoginGuest();
         }
     }
 }
