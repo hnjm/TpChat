@@ -117,7 +117,6 @@ namespace TpChat.Views
             JSval("login(this)");
             Application.DoEvents();
         }
-
         private void MemberLogin()
         {
             this.InitLoginMember();
@@ -152,7 +151,6 @@ namespace TpChat.Views
             this.txtboxPassword.Enabled = false;
         }
         #endregion
-
 
         private void btnJoin_Click(object sender, EventArgs e)
         {

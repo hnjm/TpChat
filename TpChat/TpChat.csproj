@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Home\Data.cs" />
     <Compile Include="Controllers\Login\Data.cs" />
     <Compile Include="iTool-cs\iTool\Array.cs" />
     <Compile Include="iTool-cs\iTool\Network\GeckoFX.cs" />
