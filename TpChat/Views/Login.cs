@@ -220,6 +220,7 @@ namespace TpChat.Views
         {
             this.Loader_off();
             progressBar1.Visible = false;
+            lblPercentage.Visible = false;
         }
 
         private void browser_ProgressChanged(object sender, GeckoProgressEventArgs e)
@@ -227,10 +228,12 @@ namespace TpChat.Views
             var currentP = iTool.iMath.General.Percentage(e.CurrentProgress, e.MaximumProgress);
             var currentProg = Convert.ToInt32(currentP);
 
-            progressBar1.Maximum = 100;
+            progressBar1.Maximum = 101;
             progressBar1.Minimum = 0;
             if (currentProg <= 100 && currentProg > progressBar1.Value)
                 progressBar1.Value = currentProg;
+
+            lblPercentage.Text = progressBar1.Value - 1 + "%";
         }
     }
 }

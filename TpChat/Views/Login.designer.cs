@@ -41,6 +41,7 @@
             this.chkboxGuest = new System.Windows.Forms.CheckBox();
             this.picboxLoader = new System.Windows.Forms.PictureBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblPercentage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picboxLoader)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,12 +190,22 @@
             this.progressBar1.Size = new System.Drawing.Size(294, 23);
             this.progressBar1.TabIndex = 1006;
             // 
+            // lblPercentage
+            // 
+            this.lblPercentage.AutoSize = true;
+            this.lblPercentage.Location = new System.Drawing.Point(510, 22);
+            this.lblPercentage.Name = "lblPercentage";
+            this.lblPercentage.Size = new System.Drawing.Size(28, 17);
+            this.lblPercentage.TabIndex = 1007;
+            this.lblPercentage.Text = "0%";
+            // 
             // Login
             // 
             this.AcceptButton = this.btnJoin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 637);
+            this.Controls.Add(this.lblPercentage);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.picboxLoader);
             this.Controls.Add(this.chkboxGuest);
@@ -232,5 +243,6 @@
         private System.Windows.Forms.CheckBox chkboxGuest;
         private System.Windows.Forms.PictureBox picboxLoader;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label lblPercentage;
     }
 }
