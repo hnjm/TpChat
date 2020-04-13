@@ -61,7 +61,7 @@
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(83, 26);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 999;
             this.label1.Text = "نام کاربری :\r\n";
             // 
             // cmbxGender
@@ -82,7 +82,7 @@
             this.cmbxGender.Name = "cmbxGender";
             this.cmbxGender.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbxGender.Size = new System.Drawing.Size(63, 32);
-            this.cmbxGender.TabIndex = 3;
+            this.cmbxGender.TabIndex = 5;
             // 
             // lblPass
             // 
@@ -92,7 +92,7 @@
             this.lblPass.Name = "lblPass";
             this.lblPass.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblPass.Size = new System.Drawing.Size(70, 26);
-            this.lblPass.TabIndex = 0;
+            this.lblPass.TabIndex = 999;
             this.lblPass.Text = "رمز عبور :";
             // 
             // txtboxPassword
@@ -102,7 +102,7 @@
             this.txtboxPassword.Name = "txtboxPassword";
             this.txtboxPassword.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtboxPassword.Size = new System.Drawing.Size(194, 27);
-            this.txtboxPassword.TabIndex = 2;
+            this.txtboxPassword.TabIndex = 3;
             this.txtboxPassword.UseSystemPasswordChar = true;
             // 
             // chkboxShowPass
@@ -110,10 +110,10 @@
             this.chkboxShowPass.AutoSize = true;
             this.chkboxShowPass.Font = new System.Drawing.Font("B Mitra", 11F);
             this.chkboxShowPass.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.chkboxShowPass.Location = new System.Drawing.Point(15, 50);
+            this.chkboxShowPass.Location = new System.Drawing.Point(20, 56);
             this.chkboxShowPass.Name = "chkboxShowPass";
             this.chkboxShowPass.Size = new System.Drawing.Size(62, 31);
-            this.chkboxShowPass.TabIndex = 999;
+            this.chkboxShowPass.TabIndex = 4;
             this.chkboxShowPass.Text = "رویت";
             this.chkboxShowPass.UseVisualStyleBackColor = true;
             this.chkboxShowPass.CheckedChanged += new System.EventHandler(this.chkboxShowPass_CheckedChanged);
@@ -125,7 +125,7 @@
             this.btnJoin.Location = new System.Drawing.Point(202, 97);
             this.btnJoin.Name = "btnJoin";
             this.btnJoin.Size = new System.Drawing.Size(75, 43);
-            this.btnJoin.TabIndex = 1001;
+            this.btnJoin.TabIndex = 6;
             this.btnJoin.Text = "ورود";
             this.btnJoin.UseVisualStyleBackColor = true;
             this.btnJoin.Click += new System.EventHandler(this.btnJoin_Click);
@@ -166,7 +166,7 @@
             this.chkboxGuest.Location = new System.Drawing.Point(14, 16);
             this.chkboxGuest.Name = "chkboxGuest";
             this.chkboxGuest.Size = new System.Drawing.Size(68, 31);
-            this.chkboxGuest.TabIndex = 1004;
+            this.chkboxGuest.TabIndex = 2;
             this.chkboxGuest.Text = "مهمان";
             this.chkboxGuest.UseVisualStyleBackColor = true;
             this.chkboxGuest.CheckedChanged += new System.EventHandler(this.chkboxGuest_CheckedChanged);

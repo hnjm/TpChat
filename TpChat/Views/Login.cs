@@ -219,12 +219,18 @@ namespace TpChat.Views
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
             this.Loader_off();
+            progressBar1.Visible = false;
         }
 
         private void browser_ProgressChanged(object sender, GeckoProgressEventArgs e)
         {
-            MessageBox.Show($"Current progress: {e.CurrentProgress}" +
-                $"Maximum progress: {e.MaximumProgress}");
+            var currentP = iTool.iMath.General.Percentage(e.CurrentProgress, e.MaximumProgress);
+            var currentProg = Convert.ToInt32(currentP);
+
+            progressBar1.Maximum = 100;
+            progressBar1.Minimum = 0;
+            if (currentProg <= 100 && currentProg > progressBar1.Value)
+                progressBar1.Value = currentProg;
         }
     }
 }
