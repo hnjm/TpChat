@@ -143,7 +143,7 @@ namespace TpChat.Views
 
         private void Loader_on()
         {
-            this.UseWaitCursor = true;
+            //this.UseWaitCursor = true;
             this.picboxLoader.Visible = true;
         }
         private void Loader_off()
@@ -219,6 +219,12 @@ namespace TpChat.Views
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
             this.Loader_off();
+        }
+
+        private void browser_ProgressChanged(object sender, GeckoProgressEventArgs e)
+        {
+            MessageBox.Show($"Current progress: {e.CurrentProgress}" +
+                $"Maximum progress: {e.MaximumProgress}");
         }
     }
 }

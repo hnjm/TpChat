@@ -1,5 +1,16 @@
 ﻿namespace TpChat.Controllers.Login
 {
+    /* IMPORTANT
+     * Handling alerts:
+     * use console.log() instead and capture the message
+     * by ConsoleMessage event of geckofx.
+    */
+    /* Considerale Events:
+     * < misc >
+     * ConsoleMessage
+     * CreateWindow 
+     * WindowClosed
+    */
     public static class Data
     {
         //public Cookie;
