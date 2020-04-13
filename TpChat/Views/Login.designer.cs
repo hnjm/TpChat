@@ -40,6 +40,7 @@
             this.browser = new Gecko.GeckoWebBrowser();
             this.chkboxGuest = new System.Windows.Forms.CheckBox();
             this.picboxLoader = new System.Windows.Forms.PictureBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.picboxLoader)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,7 +151,7 @@
             this.browser.FrameEventsPropagateToMainWindow = false;
             this.browser.Location = new System.Drawing.Point(12, 150);
             this.browser.Name = "browser";
-            this.browser.Size = new System.Drawing.Size(753, 480);
+            this.browser.Size = new System.Drawing.Size(670, 480);
             this.browser.TabIndex = 1003;
             this.browser.UseHttpActivityObserver = false;
             this.browser.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.browser_Navigating);
@@ -180,12 +181,20 @@
             this.picboxLoader.TabStop = false;
             this.picboxLoader.Visible = false;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(391, 50);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(294, 23);
+            this.progressBar1.TabIndex = 1006;
+            // 
             // Login
             // 
             this.AcceptButton = this.btnJoin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 141);
+            this.ClientSize = new System.Drawing.Size(697, 637);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.picboxLoader);
             this.Controls.Add(this.chkboxGuest);
             this.Controls.Add(this.browser);
@@ -197,6 +206,7 @@
             this.Controls.Add(this.cmbxGender);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtboxUsername);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -220,5 +230,6 @@
         private Gecko.GeckoWebBrowser browser;
         private System.Windows.Forms.CheckBox chkboxGuest;
         private System.Windows.Forms.PictureBox picboxLoader;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

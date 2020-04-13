@@ -64,7 +64,7 @@ namespace TpChat.Views
         {
 
         }
-        //
+
         private static string GetBetween(string strSource, string strStart, string strEnd)
         {
             int Start, End;
@@ -82,6 +82,11 @@ namespace TpChat.Views
         #endregion
 
         #region Helpers
+        private void LoginToChat()
+        {
+            JSval("login(this)");
+            Application.DoEvents();
+        }
         private void InitLoginGuest() => JSval(Data.LoginJS_guest);
         private void InitLoginMember() => JSval(Data.LoginJS_member);
 
@@ -117,8 +122,7 @@ namespace TpChat.Views
             (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
                 .Value = "";
 
-            JSval("login(this)");
-            Application.DoEvents();
+            LoginToChat();
         }
         private void MemberLogin()
         {
@@ -134,8 +138,7 @@ namespace TpChat.Views
             (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
                 .Value = this.txtboxPassword.Text;
 
-            JSval("login(this)");
-            Application.DoEvents();
+            LoginToChat();
         }
 
         private void Loader_on()
@@ -143,7 +146,8 @@ namespace TpChat.Views
             this.UseWaitCursor = true;
             this.picboxLoader.Visible = true;
         }
-        private void Loader_off() { 
+        private void Loader_off()
+        {
             this.UseWaitCursor = false;
             this.picboxLoader.Visible = false;
         }
