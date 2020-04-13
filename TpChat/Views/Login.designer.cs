@@ -40,7 +40,7 @@
             this.browser = new Gecko.GeckoWebBrowser();
             this.chkboxGuest = new System.Windows.Forms.CheckBox();
             this.picboxLoader = new System.Windows.Forms.PictureBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progbarLoader = new System.Windows.Forms.ProgressBar();
             this.lblPercentage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picboxLoader)).BeginInit();
             this.SuspendLayout();
@@ -183,12 +183,12 @@
             this.picboxLoader.TabStop = false;
             this.picboxLoader.Visible = false;
             // 
-            // progressBar1
+            // progbarLoader
             // 
-            this.progressBar1.Location = new System.Drawing.Point(391, 50);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(294, 23);
-            this.progressBar1.TabIndex = 1006;
+            this.progbarLoader.Location = new System.Drawing.Point(391, 50);
+            this.progbarLoader.Name = "progbarLoader";
+            this.progbarLoader.Size = new System.Drawing.Size(294, 23);
+            this.progbarLoader.TabIndex = 1006;
             // 
             // lblPercentage
             // 
@@ -206,7 +206,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 637);
             this.Controls.Add(this.lblPercentage);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.progbarLoader);
             this.Controls.Add(this.picboxLoader);
             this.Controls.Add(this.chkboxGuest);
             this.Controls.Add(this.browser);
@@ -242,7 +242,7 @@
         private Gecko.GeckoWebBrowser browser;
         private System.Windows.Forms.CheckBox chkboxGuest;
         private System.Windows.Forms.PictureBox picboxLoader;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progbarLoader;
         private System.Windows.Forms.Label lblPercentage;
     }
 }
