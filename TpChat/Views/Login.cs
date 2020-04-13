@@ -17,10 +17,10 @@ namespace TpChat.Views
     public partial class Login : Form
     {
         private bool GuestMode = false;
-        private Timer timer;
         public Login()
         {
             InitializeComponent();
+            this.picboxLoader.Dock = DockStyle.Fill;
             this.cmbxGender.SelectedItem = cmbxGender.Items[0];
             Xpcom.Initialize("Firefox");
             this.browser.CreateWindow += Browser_CreateWindow;
@@ -114,6 +114,9 @@ namespace TpChat.Views
             (document.GetElementById(Data.ID.GENDER) as Gecko.DOM.GeckoSelectElement)
                 .SelectedIndex = this.cmbxGender.SelectedIndex;
 
+            (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
+                .Value = "";
+
             JSval("login(this)");
             Application.DoEvents();
         }
@@ -135,8 +138,15 @@ namespace TpChat.Views
             Application.DoEvents();
         }
 
-        private void Loader_on() { this.UseWaitCursor = true; }
-        private void Loader_off() { this.UseWaitCursor = false; }
+        private void Loader_on()
+        {
+            this.UseWaitCursor = true;
+            this.picboxLoader.Visible = true;
+        }
+        private void Loader_off() { 
+            this.UseWaitCursor = false;
+            this.picboxLoader.Visible = false;
+        }
 
         private void ShowPassForm()
         {

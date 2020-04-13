@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.txtboxUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbxGender = new System.Windows.Forms.ComboBox();
@@ -38,6 +39,8 @@
             this.btnHelp = new System.Windows.Forms.Button();
             this.browser = new Gecko.GeckoWebBrowser();
             this.chkboxGuest = new System.Windows.Forms.CheckBox();
+            this.picboxLoader = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picboxLoader)).BeginInit();
             this.SuspendLayout();
             // 
             // txtboxUsername
@@ -134,7 +137,7 @@
             this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelp.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelp.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.btnHelp.Location = new System.Drawing.Point(325, 101);
+            this.btnHelp.Location = new System.Drawing.Point(312, 101);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(36, 35);
             this.btnHelp.TabIndex = 1002;
@@ -166,12 +169,24 @@
             this.chkboxGuest.UseVisualStyleBackColor = true;
             this.chkboxGuest.CheckedChanged += new System.EventHandler(this.chkboxGuest_CheckedChanged);
             // 
+            // picboxLoader
+            // 
+            this.picboxLoader.Image = ((System.Drawing.Image)(resources.GetObject("picboxLoader.Image")));
+            this.picboxLoader.Location = new System.Drawing.Point(166, 101);
+            this.picboxLoader.Name = "picboxLoader";
+            this.picboxLoader.Size = new System.Drawing.Size(30, 23);
+            this.picboxLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picboxLoader.TabIndex = 1005;
+            this.picboxLoader.TabStop = false;
+            this.picboxLoader.Visible = false;
+            // 
             // Login
             // 
             this.AcceptButton = this.btnJoin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 642);
+            this.ClientSize = new System.Drawing.Size(373, 141);
+            this.Controls.Add(this.picboxLoader);
             this.Controls.Add(this.chkboxGuest);
             this.Controls.Add(this.browser);
             this.Controls.Add(this.btnHelp);
@@ -187,6 +202,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TpChat - Login";
             this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picboxLoader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +219,6 @@
         private System.Windows.Forms.Button btnHelp;
         private Gecko.GeckoWebBrowser browser;
         private System.Windows.Forms.CheckBox chkboxGuest;
+        private System.Windows.Forms.PictureBox picboxLoader;
     }
 }
