@@ -29,24 +29,20 @@ namespace TpChat.Views
         {
             InitializeComponent();
             this.picboxLoader.Dock = DockStyle.Fill;
-            this.cmbxGender.SelectedItem = cmbxGender.Items[0];
-            this.lblChatAddress.Text = Data.URL;
+            this.cmbxGender.SelectedItem = cmbxGender.Items[0]; // default gender is boy
+            this.txtboxChatAddress.Text = Data.URL; // for now, i use a default chatroom address
             Loader_on();
-            var minnet = iTool.Network.iPing.Ping(Data.DOMAIN, 4000).pingable;
-            if (!minnet)
-                BadNet();
-            else
-                MessageBox.Show("Conncetion verified");
-
-            Xpcom.Initialize("Firefox");
-            this.browser.CreateWindow += Browser_CreateWindow;
-            this.browser.Navigate(Data.URL);
+            TryPing();
+            InitBrowser();
         }
         private void Login_Load(object sender, EventArgs e)
         {
             const byte loaderY = 150;
-            this.lblPercentage.Location = new System.Drawing.Point(this.lblPercentage.Location.X, 20);
-            this.progbarLoader.Location = new System.Drawing.Point(this.progbarLoader.Location.X, loaderY);
+            this.picboxLoader.BringToFront();
+            this.lblPercentage.BringToFront();
+            this.progbarLoader.BringToFront();
+            this.lblPercentage.Location = new Point(this.lblPercentage.Location.X, 20);
+            this.progbarLoader.Location = new Point(this.progbarLoader.Location.X, loaderY);
         }
 
         #region Statics
@@ -56,6 +52,33 @@ namespace TpChat.Views
             this.Dispose();
             Application.Exit();
             Environment.Exit(1);
+        }
+        //private string FetchMsg()
+        //{
+        //    var el = browser.Document.GetElementsByClassName(Data.CLASS.MSG_Fetch);
+        //    var msg = el.Length > 0 ? el[0].TextContent : "";
+        //    JSval("$.msgAlert.close()");
+        //    return msg;
+        //}
+        private void TryPing()
+        {
+            var net = iTool.Network.iPing.Ping(Data.DOMAIN, 4000);
+            if (!net.pingable)
+            {
+                string badnettxt = "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
+                   '\n' + "ارتباط با سایت امکان پذیر نمی باشد" +
+                   '\n' + "اینترنت شما ضعیف یا قطع می باشد";
+                MessageBox.Show(badnettxt, "خطا",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                Exit();
+            }
+        }
+        private void InitBrowser()
+        {
+            Xpcom.Initialize("Firefox");
+            this.browser.CreateWindow += Browser_CreateWindow;
+            this.browser.Navigate(Data.URL);
         }
         private string JSval(string code, bool closeProgram = false)
         {
@@ -81,23 +104,6 @@ namespace TpChat.Views
             //Application.DoEvents();
         }
         private bool ValidatedUsernameChars() => txtboxUsername.Text.Length > 1;
-        private string FetchMsg()
-        {
-            var el = browser.Document.GetElementsByClassName(Data.CLASS.MSG_Fetch);
-            var msg = el.Length > 0 ? el[0].TextContent : "";
-            JSval("$.msgAlert.close()");
-            return msg;
-        }
-        private void BadNet()
-        {
-            string badnettxt = "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
-                '\n' + "ارتباط با سایت امکان پذیر نمی باشد" +
-                '\n' + "اینترنت شما ضعیف یا قطع می باشد";
-            MessageBox.Show(badnettxt, "خطا",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-            Exit();
-        }
 
         private static string GetBetween(string strSource, string strStart, string strEnd)
         {
@@ -124,22 +130,22 @@ namespace TpChat.Views
         private void InitLoginGuest() => JSval(Data.LoginJS_guest);
         private void InitLoginMember() => JSval(Data.LoginJS_member);
 
-        private bool IsPassHidden()
-        {
-            string output;
-            var parent = this.browser.Document.GetElementById(Data.ID.PASSWORD_PARENT)
-                as GeckoHtmlElement;
+        //private bool IsPassHidden()
+        //{
+        //    string output;
+        //    var parent = this.browser.Document.GetElementById(Data.ID.PASSWORD_PARENT)
+        //        as GeckoHtmlElement;
 
-            output = parent.GetAttribute("style");
-            output = GetBetween(output, ":", ";");
-            output = output.ToLower();
-            return output.Contains("none");
-        }
-        private void CheckJoinStatus()
-        {
-            if (browser.Document.GetElementById("message") != null)
-                Data.Joined = true;
-        }
+        //    output = parent.GetAttribute("style");
+        //    output = GetBetween(output, ":", ";");
+        //    output = output.ToLower();
+        //    return output.Contains("none");
+        //}
+        //private void CheckJoinStatus()
+        //{
+        //    if (browser.Document.GetElementById("message") != null)
+        //        Data.Joined = true;
+        //}
 
         private void GuestLogin()
         {

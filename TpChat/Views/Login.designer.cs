@@ -43,6 +43,8 @@
             this.progbarLoader = new System.Windows.Forms.ProgressBar();
             this.lblPercentage = new System.Windows.Forms.Label();
             this.lblChatAddress = new System.Windows.Forms.Label();
+            this.txtboxChatAddress = new System.Windows.Forms.TextBox();
+            this.btnChatrooms = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picboxLoader)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,10 +210,32 @@
             // lblChatAddress
             // 
             this.lblChatAddress.AutoSize = true;
-            this.lblChatAddress.Location = new System.Drawing.Point(21, 14);
+            this.lblChatAddress.Font = new System.Drawing.Font("B Nazanin", 10F, System.Drawing.FontStyle.Bold);
+            this.lblChatAddress.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblChatAddress.Location = new System.Drawing.Point(278, 15);
             this.lblChatAddress.Name = "lblChatAddress";
-            this.lblChatAddress.Size = new System.Drawing.Size(0, 17);
-            this.lblChatAddress.TabIndex = 1008;
+            this.lblChatAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblChatAddress.Size = new System.Drawing.Size(105, 27);
+            this.lblChatAddress.TabIndex = 1009;
+            this.lblChatAddress.Text = "آدرس چت روم :";
+            // 
+            // txtboxChatAddress
+            // 
+            this.txtboxChatAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F);
+            this.txtboxChatAddress.Location = new System.Drawing.Point(54, 17);
+            this.txtboxChatAddress.Name = "txtboxChatAddress";
+            this.txtboxChatAddress.Size = new System.Drawing.Size(223, 24);
+            this.txtboxChatAddress.TabIndex = 1010;
+            this.txtboxChatAddress.Text = "Address";
+            // 
+            // btnChatrooms
+            // 
+            this.btnChatrooms.Location = new System.Drawing.Point(14, 17);
+            this.btnChatrooms.Name = "btnChatrooms";
+            this.btnChatrooms.Size = new System.Drawing.Size(34, 23);
+            this.btnChatrooms.TabIndex = 1011;
+            this.btnChatrooms.Text = "=";
+            this.btnChatrooms.UseVisualStyleBackColor = true;
             // 
             // Login
             // 
@@ -219,11 +243,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(373, 188);
+            this.ClientSize = new System.Drawing.Size(385, 188);
+            this.Controls.Add(this.picboxLoader);
+            this.Controls.Add(this.btnChatrooms);
+            this.Controls.Add(this.txtboxChatAddress);
             this.Controls.Add(this.lblChatAddress);
             this.Controls.Add(this.lblPercentage);
             this.Controls.Add(this.progbarLoader);
-            this.Controls.Add(this.picboxLoader);
             this.Controls.Add(this.chkboxGuest);
             this.Controls.Add(this.browser);
             this.Controls.Add(this.btnHelp);
@@ -261,5 +287,7 @@
         private System.Windows.Forms.ProgressBar progbarLoader;
         private System.Windows.Forms.Label lblPercentage;
         private System.Windows.Forms.Label lblChatAddress;
+        private System.Windows.Forms.TextBox txtboxChatAddress;
+        private System.Windows.Forms.Button btnChatrooms;
     }
 }
