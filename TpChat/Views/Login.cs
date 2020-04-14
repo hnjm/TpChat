@@ -2,6 +2,7 @@
 using Gecko.JQuery;
 using Gecko.WebIDL;
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,11 @@ namespace TpChat.Views
             InitializeComponent();
             this.picboxLoader.Dock = DockStyle.Fill;
             this.cmbxGender.SelectedItem = cmbxGender.Items[0];
+            Loader_on();
+            var goodnet = iTool.Network.iPing.Ping(Data.DOMAIN, 3500).pingable;
+            if (!goodnet)
+                BadNet();
+
             Xpcom.Initialize("Firefox");
             this.browser.CreateWindow += Browser_CreateWindow;
             this.browser.Navigate(Data.URL);
@@ -29,6 +35,13 @@ namespace TpChat.Views
         private void Login_Load(object sender, EventArgs e) { }
 
         #region Statics
+        private void Exit()
+        {
+            this.Close();
+            this.Dispose();
+            Application.Exit();
+            Environment.Exit(1);
+        }
         private string JSval(string code, bool closeProgram = false)
         {
             string result = string.Empty;
@@ -63,6 +76,16 @@ namespace TpChat.Views
         private void FetchRecog()
         {
 
+        }
+        private void BadNet()
+        {
+            string badnettxt = "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
+                '\n' + "ارتباط با سایت امکان پذیر نمی باشد" +
+                '\n' + "اینترنت شما ضعیف یا قطع می باشد";
+            MessageBox.Show(badnettxt, "خطا",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            Exit();
         }
 
         private static string GetBetween(string strSource, string strStart, string strEnd)

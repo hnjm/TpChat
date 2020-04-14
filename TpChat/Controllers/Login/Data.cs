@@ -17,6 +17,7 @@
         public static bool Joined = false;
 
         public const string URL = "http://www.persiann24.tk/";
+        public const string DOMAIN = "www.persiann24.tk";
         public const string URL_banned = URL + "benned";
 
         public struct ID
