@@ -188,7 +188,7 @@
             // progbarLoader
             // 
             this.progbarLoader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.progbarLoader.Location = new System.Drawing.Point(20, 230);
+            this.progbarLoader.Location = new System.Drawing.Point(20, 210);
             this.progbarLoader.Name = "progbarLoader";
             this.progbarLoader.Size = new System.Drawing.Size(341, 23);
             this.progbarLoader.TabIndex = 1006;
@@ -196,7 +196,7 @@
             // lblPercentage
             // 
             this.lblPercentage.AutoSize = true;
-            this.lblPercentage.Location = new System.Drawing.Point(139, 202);
+            this.lblPercentage.Location = new System.Drawing.Point(172, 190);
             this.lblPercentage.Name = "lblPercentage";
             this.lblPercentage.Size = new System.Drawing.Size(28, 17);
             this.lblPercentage.TabIndex = 1007;
@@ -215,7 +215,8 @@
             this.AcceptButton = this.btnJoin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 265);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(373, 249);
             this.Controls.Add(this.lblChatAddress);
             this.Controls.Add(this.lblPercentage);
             this.Controls.Add(this.progbarLoader);

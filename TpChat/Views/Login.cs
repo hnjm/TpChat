@@ -21,12 +21,12 @@ namespace TpChat.Views
         public Login()
         {
             InitializeComponent();
-            this.lblChatAddress.Text = Data.URL;
             this.picboxLoader.Dock = DockStyle.Fill;
             this.cmbxGender.SelectedItem = cmbxGender.Items[0];
+            this.lblChatAddress.Text = Data.URL;
             Loader_on();
-            var goodnet = iTool.Network.iPing.Ping(Data.DOMAIN, 3500).pingable;
-            if (!goodnet)
+            var minnet = iTool.Network.iPing.Ping(Data.DOMAIN, 4000).pingable;
+            if (!minnet)
                 BadNet();
 
             Xpcom.Initialize("Firefox");
@@ -73,10 +73,6 @@ namespace TpChat.Views
             var msg = el.Length > 0 ? el[0].TextContent : "";
             JSval("$.msgAlert.close()");
             return msg;
-        }
-        private void FetchRecog()
-        {
-
         }
         private void BadNet()
         {
@@ -166,13 +162,15 @@ namespace TpChat.Views
 
         private void Loader_on()
         {
-            //this.UseWaitCursor = true;
+            this.UseWaitCursor = true;
             this.picboxLoader.Visible = true;
+            this.lblChatAddress.Visible = false;
         }
         private void Loader_off()
         {
             this.UseWaitCursor = false;
             this.picboxLoader.Visible = false;
+            this.lblChatAddress.Visible = true;
         }
 
         private void ShowPassForm()
@@ -245,7 +243,6 @@ namespace TpChat.Views
             progbarLoader.Visible = false;
             lblPercentage.Visible = false;
         }
-
         private void browser_ProgressChanged(object sender, GeckoProgressEventArgs e)
         {
             var currentP = iTool.iMath.General.Percentage(e.CurrentProgress, e.MaximumProgress);
@@ -255,8 +252,8 @@ namespace TpChat.Views
             progbarLoader.Minimum = 0;
             if (currentProg <= 100 && currentProg > progbarLoader.Value)
                 progbarLoader.Value = currentProg;
-
-            lblPercentage.Text = progbarLoader.Value - 1 + "%";
+            if (progbarLoader.Value > 0)
+                lblPercentage.Text = progbarLoader.Value - 1 + "%";
         }
     }
 }
