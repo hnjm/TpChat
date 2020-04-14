@@ -3,14 +3,21 @@ using Gecko.JQuery;
 using Gecko.WebIDL;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpChat.Controllers.Login;
 
-// TODO
-/*
+/* TODO
  * Set local storage for check boxes & inputs.
+ * Add default chat rooms + From google.
+   ways to get From google :
+    Can use text box to get the address.
+    Can Create a new tool form to show the chat room : 
+        by searching google like regular browser OR do an overkill and
+        add Google API to search (also with the input of google)
+ *
 */
 
 namespace TpChat.Views
@@ -28,12 +35,19 @@ namespace TpChat.Views
             var minnet = iTool.Network.iPing.Ping(Data.DOMAIN, 4000).pingable;
             if (!minnet)
                 BadNet();
+            else
+                MessageBox.Show("Conncetion verified");
 
             Xpcom.Initialize("Firefox");
             this.browser.CreateWindow += Browser_CreateWindow;
             this.browser.Navigate(Data.URL);
         }
-        private void Login_Load(object sender, EventArgs e) { }
+        private void Login_Load(object sender, EventArgs e)
+        {
+            ushort y = 150;
+            this.lblPercentage.Location = new System.Drawing.Point(this.lblPercentage.Location.X, 20);
+            this.progbarLoader.Location = new System.Drawing.Point(this.progbarLoader.Location.X, y);
+        }
 
         #region Statics
         private void Exit()

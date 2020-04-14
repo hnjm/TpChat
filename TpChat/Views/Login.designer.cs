@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.txtboxUsername = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.cmbxGender = new System.Windows.Forms.ComboBox();
             this.lblPass = new System.Windows.Forms.Label();
             this.txtboxPassword = new System.Windows.Forms.TextBox();
@@ -55,16 +55,16 @@
             this.txtboxUsername.Size = new System.Drawing.Size(194, 33);
             this.txtboxUsername.TabIndex = 1;
             // 
-            // label1
+            // lblUsername
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("B Mitra", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(283, 51);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(83, 26);
-            this.label1.TabIndex = 999;
-            this.label1.Text = "نام کاربری :\r\n";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("B Mitra", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblUsername.Location = new System.Drawing.Point(283, 51);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblUsername.Size = new System.Drawing.Size(83, 26);
+            this.lblUsername.TabIndex = 999;
+            this.lblUsername.Text = "نام کاربری :\r\n";
             // 
             // cmbxGender
             // 
@@ -188,7 +188,7 @@
             // progbarLoader
             // 
             this.progbarLoader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.progbarLoader.Location = new System.Drawing.Point(20, 210);
+            this.progbarLoader.Location = new System.Drawing.Point(16, 214);
             this.progbarLoader.Name = "progbarLoader";
             this.progbarLoader.Size = new System.Drawing.Size(341, 23);
             this.progbarLoader.TabIndex = 1006;
@@ -196,7 +196,7 @@
             // lblPercentage
             // 
             this.lblPercentage.AutoSize = true;
-            this.lblPercentage.Location = new System.Drawing.Point(172, 190);
+            this.lblPercentage.Location = new System.Drawing.Point(172, 194);
             this.lblPercentage.Name = "lblPercentage";
             this.lblPercentage.Size = new System.Drawing.Size(28, 17);
             this.lblPercentage.TabIndex = 1007;
@@ -216,7 +216,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(373, 249);
+            this.ClientSize = new System.Drawing.Size(373, 188);
             this.Controls.Add(this.lblChatAddress);
             this.Controls.Add(this.lblPercentage);
             this.Controls.Add(this.progbarLoader);
@@ -229,7 +229,7 @@
             this.Controls.Add(this.lblPass);
             this.Controls.Add(this.txtboxPassword);
             this.Controls.Add(this.cmbxGender);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtboxUsername);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -245,7 +245,7 @@
 
         #endregion
         private System.Windows.Forms.TextBox txtboxUsername;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.ComboBox cmbxGender;
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.TextBox txtboxPassword;
