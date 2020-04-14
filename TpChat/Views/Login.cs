@@ -41,7 +41,7 @@ namespace TpChat.Views
             this.picboxLoader.BringToFront();
             this.lblPercentage.BringToFront();
             this.progbarLoader.BringToFront();
-            this.lblPercentage.Location = new Point(this.lblPercentage.Location.X, 20);
+            this.lblPercentage.Location = new Point(this.lblPercentage.Location.X, 10);
             this.progbarLoader.Location = new Point(this.progbarLoader.Location.X, loaderY);
         }
 
@@ -184,13 +184,14 @@ namespace TpChat.Views
         {
             this.UseWaitCursor = true;
             this.picboxLoader.Visible = true;
-            this.lblChatAddress.Visible = false;
+            this.picboxLoader.BringToFront();
+            this.lblPercentage.BringToFront();
+            this.progbarLoader.BringToFront();
         }
         private void Loader_off()
         {
             this.UseWaitCursor = false;
             this.picboxLoader.Visible = false;
-            this.lblChatAddress.Visible = true;
         }
 
         private void ShowPassForm()
@@ -209,8 +210,8 @@ namespace TpChat.Views
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
+            TryPing();
             Loader_on();
-
             if (ValidatedUsernameChars())
             {
                 if (GuestMode)
@@ -273,7 +274,7 @@ namespace TpChat.Views
             if (currentProg <= 100 && currentProg > progbarLoader.Value)
                 progbarLoader.Value = currentProg;
             if (progbarLoader.Value > 0)
-                lblPercentage.Text = progbarLoader.Value - 1 + "%";
+                lblPercentage.Text = progbarLoader.Value - 1 + " %";
         }
     }
 }

@@ -201,9 +201,10 @@
             // lblPercentage
             // 
             this.lblPercentage.AutoSize = true;
-            this.lblPercentage.Location = new System.Drawing.Point(172, 194);
+            this.lblPercentage.Font = new System.Drawing.Font("MRT_AridiKoufi", 15F);
+            this.lblPercentage.Location = new System.Drawing.Point(169, 194);
             this.lblPercentage.Name = "lblPercentage";
-            this.lblPercentage.Size = new System.Drawing.Size(28, 17);
+            this.lblPercentage.Size = new System.Drawing.Size(34, 36);
             this.lblPercentage.TabIndex = 1007;
             this.lblPercentage.Text = "0%";
             // 
