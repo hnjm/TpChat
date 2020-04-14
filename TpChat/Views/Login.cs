@@ -44,9 +44,9 @@ namespace TpChat.Views
         }
         private void Login_Load(object sender, EventArgs e)
         {
-            ushort y = 150;
+            const byte loaderY = 150;
             this.lblPercentage.Location = new System.Drawing.Point(this.lblPercentage.Location.X, 20);
-            this.progbarLoader.Location = new System.Drawing.Point(this.progbarLoader.Location.X, y);
+            this.progbarLoader.Location = new System.Drawing.Point(this.progbarLoader.Location.X, loaderY);
         }
 
         #region Statics

@@ -49,7 +49,7 @@
             // txtboxUsername
             // 
             this.txtboxUsername.Font = new System.Drawing.Font("2  Yekan", 10F);
-            this.txtboxUsername.Location = new System.Drawing.Point(83, 48);
+            this.txtboxUsername.Location = new System.Drawing.Point(83, 55);
             this.txtboxUsername.Name = "txtboxUsername";
             this.txtboxUsername.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtboxUsername.Size = new System.Drawing.Size(194, 33);
@@ -59,7 +59,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("B Mitra", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblUsername.Location = new System.Drawing.Point(283, 51);
+            this.lblUsername.Location = new System.Drawing.Point(283, 58);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblUsername.Size = new System.Drawing.Size(83, 26);
@@ -79,7 +79,7 @@
             this.cmbxGender.Items.AddRange(new object[] {
             "  پسر",
             "  دختر"});
-            this.cmbxGender.Location = new System.Drawing.Point(83, 134);
+            this.cmbxGender.Location = new System.Drawing.Point(83, 141);
             this.cmbxGender.MaxDropDownItems = 2;
             this.cmbxGender.Name = "cmbxGender";
             this.cmbxGender.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -90,7 +90,7 @@
             // 
             this.lblPass.AutoSize = true;
             this.lblPass.Font = new System.Drawing.Font("B Mitra", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblPass.Location = new System.Drawing.Point(283, 91);
+            this.lblPass.Location = new System.Drawing.Point(283, 96);
             this.lblPass.Name = "lblPass";
             this.lblPass.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblPass.Size = new System.Drawing.Size(70, 26);
@@ -100,7 +100,7 @@
             // txtboxPassword
             // 
             this.txtboxPassword.Font = new System.Drawing.Font("Arial", 10F);
-            this.txtboxPassword.Location = new System.Drawing.Point(83, 87);
+            this.txtboxPassword.Location = new System.Drawing.Point(83, 94);
             this.txtboxPassword.Name = "txtboxPassword";
             this.txtboxPassword.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtboxPassword.Size = new System.Drawing.Size(194, 27);
@@ -110,11 +110,11 @@
             // chkboxShowPass
             // 
             this.chkboxShowPass.AutoSize = true;
-            this.chkboxShowPass.Font = new System.Drawing.Font("B Mitra", 11F);
-            this.chkboxShowPass.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.chkboxShowPass.Location = new System.Drawing.Point(20, 89);
+            this.chkboxShowPass.Font = new System.Drawing.Font("B Mitra", 12F);
+            this.chkboxShowPass.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkboxShowPass.Location = new System.Drawing.Point(14, 92);
             this.chkboxShowPass.Name = "chkboxShowPass";
-            this.chkboxShowPass.Size = new System.Drawing.Size(62, 31);
+            this.chkboxShowPass.Size = new System.Drawing.Size(64, 32);
             this.chkboxShowPass.TabIndex = 4;
             this.chkboxShowPass.Text = "رویت";
             this.chkboxShowPass.UseVisualStyleBackColor = true;
@@ -122,14 +122,16 @@
             // 
             // btnJoin
             // 
+            this.btnJoin.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btnJoin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJoin.Font = new System.Drawing.Font("IRTehran", 10F);
             this.btnJoin.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnJoin.Location = new System.Drawing.Point(202, 130);
+            this.btnJoin.Location = new System.Drawing.Point(202, 137);
             this.btnJoin.Name = "btnJoin";
             this.btnJoin.Size = new System.Drawing.Size(75, 43);
             this.btnJoin.TabIndex = 6;
             this.btnJoin.Text = "ورود";
-            this.btnJoin.UseVisualStyleBackColor = true;
+            this.btnJoin.UseVisualStyleBackColor = false;
             this.btnJoin.Click += new System.EventHandler(this.btnJoin_Click);
             // 
             // btnHelp
@@ -140,7 +142,7 @@
             this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelp.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelp.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.btnHelp.Location = new System.Drawing.Point(312, 134);
+            this.btnHelp.Location = new System.Drawing.Point(324, 141);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(36, 35);
             this.btnHelp.TabIndex = 1002;
@@ -151,7 +153,7 @@
             // browser
             // 
             this.browser.FrameEventsPropagateToMainWindow = false;
-            this.browser.Location = new System.Drawing.Point(20, 134);
+            this.browser.Location = new System.Drawing.Point(20, 141);
             this.browser.Name = "browser";
             this.browser.Size = new System.Drawing.Size(44, 28);
             this.browser.TabIndex = 1003;
@@ -166,7 +168,7 @@
             this.chkboxGuest.AutoSize = true;
             this.chkboxGuest.Font = new System.Drawing.Font("B Mitra", 11F);
             this.chkboxGuest.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.chkboxGuest.Location = new System.Drawing.Point(14, 49);
+            this.chkboxGuest.Location = new System.Drawing.Point(14, 56);
             this.chkboxGuest.Name = "chkboxGuest";
             this.chkboxGuest.Size = new System.Drawing.Size(68, 31);
             this.chkboxGuest.TabIndex = 2;
@@ -177,7 +179,7 @@
             // picboxLoader
             // 
             this.picboxLoader.Image = ((System.Drawing.Image)(resources.GetObject("picboxLoader.Image")));
-            this.picboxLoader.Location = new System.Drawing.Point(166, 134);
+            this.picboxLoader.Location = new System.Drawing.Point(166, 141);
             this.picboxLoader.Name = "picboxLoader";
             this.picboxLoader.Size = new System.Drawing.Size(30, 23);
             this.picboxLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
