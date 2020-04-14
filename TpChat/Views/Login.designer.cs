@@ -193,7 +193,7 @@
             // progbarLoader
             // 
             this.progbarLoader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.progbarLoader.Location = new System.Drawing.Point(16, 214);
+            this.progbarLoader.Location = new System.Drawing.Point(14, 231);
             this.progbarLoader.Name = "progbarLoader";
             this.progbarLoader.Size = new System.Drawing.Size(341, 23);
             this.progbarLoader.TabIndex = 1006;
@@ -202,7 +202,7 @@
             // 
             this.lblPercentage.AutoSize = true;
             this.lblPercentage.Font = new System.Drawing.Font("MRT_AridiKoufi", 15F);
-            this.lblPercentage.Location = new System.Drawing.Point(169, 194);
+            this.lblPercentage.Location = new System.Drawing.Point(167, 211);
             this.lblPercentage.Name = "lblPercentage";
             this.lblPercentage.Size = new System.Drawing.Size(34, 36);
             this.lblPercentage.TabIndex = 1007;
