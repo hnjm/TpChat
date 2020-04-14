@@ -21,6 +21,7 @@ namespace TpChat.Views
         public Login()
         {
             InitializeComponent();
+            this.lblChatAddress.Text = Data.URL;
             this.picboxLoader.Dock = DockStyle.Fill;
             this.cmbxGender.SelectedItem = cmbxGender.Items[0];
             Loader_on();
@@ -124,7 +125,6 @@ namespace TpChat.Views
             output = output.ToLower();
             return output.Contains("none");
         }
-
         private void CheckJoinStatus()
         {
             if (browser.Document.GetElementById("message") != null)

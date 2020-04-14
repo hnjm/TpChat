@@ -10,6 +10,7 @@ namespace TpChat.Controllers.Home
     {
         /* Server not available */
         // <body>Service unavailable</body> 
+        // <body><p>Gateway Timeout</p></body> 
 
         /* links */
         //const ranks = 'http://www.persiann24.tk/users/rank';

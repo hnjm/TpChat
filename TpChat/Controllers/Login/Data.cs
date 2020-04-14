@@ -1,4 +1,6 @@
-﻿namespace TpChat.Controllers.Login
+﻿using System;
+
+namespace TpChat.Controllers.Login
 {
     /* IMPORTANT
      * Handling alerts:
@@ -10,6 +12,10 @@
      * ConsoleMessage
      * CreateWindow 
      * WindowClosed
+    */
+    /* Todo
+     * Replace type of url (string) to Url.
+     * Url shouldn't be constant. user will decide.
     */
     public static class Data
     {
