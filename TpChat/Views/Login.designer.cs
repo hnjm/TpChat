@@ -145,7 +145,7 @@
             this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelp.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelp.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.btnHelp.Location = new System.Drawing.Point(324, 141);
+            this.btnHelp.Location = new System.Drawing.Point(342, 141);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(36, 35);
             this.btnHelp.TabIndex = 1002;
@@ -224,9 +224,9 @@
             this.txtboxChatAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F);
             this.txtboxChatAddress.Location = new System.Drawing.Point(54, 17);
             this.txtboxChatAddress.Name = "txtboxChatAddress";
+            this.txtboxChatAddress.ReadOnly = true;
             this.txtboxChatAddress.Size = new System.Drawing.Size(223, 24);
             this.txtboxChatAddress.TabIndex = 1010;
-            this.txtboxChatAddress.Text = "Address";
             // 
             // btnChatrooms
             // 
@@ -236,6 +236,7 @@
             this.btnChatrooms.TabIndex = 1011;
             this.btnChatrooms.Text = "=";
             this.btnChatrooms.UseVisualStyleBackColor = true;
+            this.btnChatrooms.Visible = false;
             // 
             // Login
             // 
