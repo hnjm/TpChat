@@ -123,6 +123,7 @@
             // btnJoin
             // 
             this.btnJoin.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btnJoin.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnJoin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJoin.Font = new System.Drawing.Font("IRTehran", 10F);
             this.btnJoin.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
