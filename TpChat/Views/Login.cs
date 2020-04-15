@@ -49,7 +49,7 @@ namespace TpChat.Views
         private void Exit()
         {
             this.Close();
-            this.Dispose();
+            this.Dispose(true);
             Application.Exit();
             Environment.Exit(1);
         }
