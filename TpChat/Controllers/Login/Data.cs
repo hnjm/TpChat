@@ -151,12 +151,15 @@ function login(e) {
                             break;
                         // BlackListed name
                         case 'badname':
+                            window.alert('این نام مناسب نمی باشد');
                             break;
                         // Banned
                         case 'benn':
+                            window.alert('به دلیل اخراج شدن شما اجازه ی ورود ندارید');
                             break;
                         // Capacity
                         case 'capacity':
+                            window.alert('ظرفیت چت روم پر می باشد');
                             break;
                         // Member Loging : Step 2 
                         case 'running':
@@ -173,6 +176,7 @@ function login(e) {
                             break;
                         // wrong pass
                         case 'pass':
+                            window.alert('رمز عبور اشتباه می باشد');
                             break;
                         // i guess it's for Captcha
                         default:
