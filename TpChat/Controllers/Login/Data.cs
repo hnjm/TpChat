@@ -75,16 +75,19 @@ function login(e) {
                             break;
                         // BlackListed name
                         case 'badname':
+                            
                             break;
                         // Banned
                         case 'benn':
+                            window.alert('به دلیل اخراج شدن شما اجازه ی ورود ندارید');
                             break;
                         // Capacity
                         case 'capacity':
+                            window.alert('ظرفیت چت روم پر می باشد');
                             break;
                         // Member Loging : Step 2 
                         case 'running':
-                            window.alert('Registered account !');
+                            window.alert('این نام کاربری ثبت نام شده است');
                             document.getElementById('lay_pw').style.display = 'block',
                                 document.getElementById('password').select(),
                                 document.getElementById('lay_gender').style.display = 'none';
@@ -94,10 +97,12 @@ function login(e) {
                             break;
                         // admins password appear
                         case 'passwh':
+                            window.alert('این حساب کاربری ثبت نام شده و از ادمین ها می باشد');
                             document.getElementById('lay_pw').style.display = 'block', document.getElementById('password').select(), document.getElementById('lay_hide').style.display = 'block', document.getElementById('lay_gender').style.display = 'none';
                             break;
                         // wrong pass
                         case 'pass':
+                            window.alert('رمز عبور اشتباه می باشد');
                             break;
                         // i guess it's for Captcha
                         default:
