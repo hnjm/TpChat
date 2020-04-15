@@ -17,12 +17,6 @@ namespace TpChat.Views
         public Home()
         {
             InitializeComponent();
-            Xpcom.Initialize("Firefox");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            browser.Navigate(Data.URL + "chat");
         }
     }
 }

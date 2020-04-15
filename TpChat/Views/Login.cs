@@ -257,7 +257,11 @@ namespace TpChat.Views
             this.Loader_on();
             bool joined = e.Uri.LocalPath.ToLower().Contains("chat");
             if (joined)
-                MessageBox.Show("Navigating to the chat room");
+            {
+                this.Close();
+                this.Dispose(true);
+                new Views.Home().ShowDialog();
+            }
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
