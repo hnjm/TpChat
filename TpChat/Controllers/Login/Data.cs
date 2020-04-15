@@ -75,7 +75,7 @@ function login(e) {
                             break;
                         // BlackListed name
                         case 'badname':
-                            
+                            window.alert('این نام مناسب نمی باشد');
                             break;
                         // Banned
                         case 'benn':
