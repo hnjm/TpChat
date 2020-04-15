@@ -151,6 +151,7 @@
             this.btnHelp.TabIndex = 1002;
             this.btnHelp.Text = "?";
             this.btnHelp.UseVisualStyleBackColor = false;
+            this.btnHelp.Visible = false;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // browser
