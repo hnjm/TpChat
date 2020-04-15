@@ -260,7 +260,7 @@ namespace TpChat.Views
             {
                 this.Close();
                 this.Dispose(true);
-                new Views.Home().ShowDialog();
+                new Home(Data.URL).ShowDialog();
             }
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)

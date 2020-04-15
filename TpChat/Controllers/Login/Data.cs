@@ -22,9 +22,9 @@ namespace TpChat.Controllers.Login
         //public Cookie;
         public static bool Joined = false;
 
-        public const string URL = "http://www.persiann24.tk/";
-        public const string DOMAIN = "www.persiann24.tk";
-        public const string URL_banned = URL + "benned";
+        public static string URL = "http://www.persiann24.tk/";
+        public static string DOMAIN = "www.persiann24.tk";
+        //public static string URL_banned { get { return URL + "benned"; } }
 
         public struct ID
         {

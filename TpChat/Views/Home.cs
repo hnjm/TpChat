@@ -14,9 +14,10 @@ namespace TpChat.Views
 {
     public partial class Home : Form
     {
-        public Home()
+        public Home(string ChatroomAddress)
         {
             InitializeComponent();
+            this.browser.Navigate(ChatroomAddress);
         }
     }
 }
