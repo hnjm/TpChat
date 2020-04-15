@@ -31,8 +31,8 @@ namespace TpChat.Views
             this.picboxLoader.Dock = DockStyle.Fill;
             this.cmbxGender.SelectedItem = cmbxGender.Items[0]; // default gender is boy
             this.txtboxChatAddress.Text = Data.URL; // for now, i use a default chatroom address
+            // Put TryPing() here after making it asynchronous (By threading, not async).
             Loader_on();
-            TryPing();
             InitBrowser();
         }
         private void Login_Load(object sender, EventArgs e)
@@ -43,6 +43,7 @@ namespace TpChat.Views
             this.progbarLoader.BringToFront();
             this.lblPercentage.Location = new Point(this.lblPercentage.Location.X, 10);
             this.progbarLoader.Location = new Point(this.progbarLoader.Location.X, loaderY);
+            TryPing();
         }
 
         #region Statics
@@ -62,8 +63,8 @@ namespace TpChat.Views
         //}
         private void TryPing()
         {
-            var net = iTool.Network.iPing.Ping(Data.DOMAIN, 4000);
-            if (!net.pingable)
+            var hasnet = iTool.Network.iPing.Ping(Data.DOMAIN, 5000).pingable;
+            if (!hasnet) // if no ping in 5 seconds
             {
                 string badnettxt = "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
                    '\n' + "ارتباط با سایت امکان پذیر نمی باشد" +
