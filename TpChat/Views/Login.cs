@@ -92,8 +92,8 @@ namespace TpChat.Views
         private void InitBrowser()
         {
             Xpcom.Initialize("Firefox");
-            this.browser.CreateWindow += Browser_CreateWindow;
             this.browser.Navigate(Data.URL);
+            //this.browser.CreateWindow += Browser_CreateWindow;
         }
         private string JSval(string code, bool closeProgram = false)
         {
