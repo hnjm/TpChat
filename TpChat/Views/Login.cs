@@ -108,10 +108,7 @@ namespace TpChat.Views
                 {
                     MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     if (closeProgram)
-                    {
-                        this.Close();
-                        Application.Exit();
-                    }
+                        this.Exit();
                 }
             }
             return result;
@@ -314,7 +311,10 @@ namespace TpChat.Views
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
             browser.Document.GetElementsByTagName("body")[0].Click();
+            // OR
+            JSval("LoadStandardPop()");
             Application.DoEvents();
+
             this.Loader_off();
             progbarLoader.Visible = false;
             lblPercentage.Visible = false;
