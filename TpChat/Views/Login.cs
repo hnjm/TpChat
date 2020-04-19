@@ -55,6 +55,17 @@ namespace TpChat.Views
             Application.Exit();
             Environment.Exit(1);
         }
+        private void ExitTookSoLong(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "مدت زیادی طول کشید", 
+                "خطا", 
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+                );
+            this.Exit();
+        }
+
         //private string FetchMsg()
         //{
         //    var el = browser.Document.GetElementsByClassName(Data.CLASS.MSG_Fetch);
@@ -72,7 +83,7 @@ namespace TpChat.Views
                    '\n' + "اینترنت شما ضعیف یا قطع می باشد" +
                    '\n' + '\n' + "آیا می خواهید دوباره امتحان کنید؟";
 
-                var answer=MessageBox.Show(badnettxt,
+                var answer = MessageBox.Show(badnettxt,
                                 "خطا",
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Error);
@@ -220,12 +231,16 @@ namespace TpChat.Views
             this.picboxLoader.BringToFront();
             this.lblPercentage.BringToFront();
             this.progbarLoader.BringToFront();
+            //
+            this.timerLoading.Enabled = true;
         }
         private void Loader_off()
         {
             this.loading = false;
             this.UseWaitCursor = false;
             this.picboxLoader.Visible = false;
+            //
+            this.timerLoading.Enabled = false;
         }
 
         private void ShowPassForm()

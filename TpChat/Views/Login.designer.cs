@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.txtboxUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             this.lblChatAddress = new System.Windows.Forms.Label();
             this.txtboxChatAddress = new System.Windows.Forms.TextBox();
             this.btnChatrooms = new System.Windows.Forms.Button();
+            this.timerLoading = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picboxLoader)).BeginInit();
             this.SuspendLayout();
             // 
@@ -239,6 +241,11 @@
             this.btnChatrooms.UseVisualStyleBackColor = true;
             this.btnChatrooms.Visible = false;
             // 
+            // timerLoading
+            // 
+            this.timerLoading.Interval = 15000;
+            this.timerLoading.Tick += new System.EventHandler(this.ExitTookSoLong);
+            // 
             // Login
             // 
             this.AcceptButton = this.btnJoin;
@@ -292,5 +299,6 @@
         private System.Windows.Forms.Label lblChatAddress;
         private System.Windows.Forms.TextBox txtboxChatAddress;
         private System.Windows.Forms.Button btnChatrooms;
+        private System.Windows.Forms.Timer timerLoading;
     }
 }
