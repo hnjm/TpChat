@@ -243,7 +243,7 @@
             // 
             // timerLoading
             // 
-            this.timerLoading.Interval = 15000;
+            this.timerLoading.Interval = 100000;
             this.timerLoading.Tick += new System.EventHandler(this.ExitTookSoLong);
             // 
             // Login

@@ -84,7 +84,7 @@ namespace TpChat.Views
 
                 MessageBox.Show(badnettxt,
                                 "خطا",
-                                MessageBoxButtons.YesNo,
+                                MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 Exit();
             }
