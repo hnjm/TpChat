@@ -58,8 +58,8 @@ namespace TpChat.Views
         private void ExitTookSoLong(object sender, EventArgs e)
         {
             MessageBox.Show(
-                "مدت زیادی طول کشید", 
-                "خطا", 
+                "مدت زیادی طول کشید",
+                "خطا",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning
                 );
@@ -80,18 +80,13 @@ namespace TpChat.Views
             {
                 string badnettxt = "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
                    '\n' + "ارتباط با سایت امکان پذیر نمی باشد" +
-                   '\n' + "اینترنت شما ضعیف یا قطع می باشد" +
-                   '\n' + '\n' + "آیا می خواهید دوباره امتحان کنید؟";
+                   '\n' + "اینترنت شما ضعیف یا قطع می باشد";
 
-                var answer = MessageBox.Show(badnettxt,
+                MessageBox.Show(badnettxt,
                                 "خطا",
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Error);
-
-                if (answer == DialogResult.Yes)
-                    Application.Restart();
-                else
-                    Exit();
+                Exit();
             }
         }
         private void InitBrowser()
@@ -318,6 +313,8 @@ namespace TpChat.Views
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
+            browser.Document.GetElementsByTagName("body")[0].Click();
+            Application.DoEvents();
             this.Loader_off();
             progbarLoader.Visible = false;
             lblPercentage.Visible = false;

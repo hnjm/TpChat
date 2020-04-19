@@ -23,8 +23,8 @@ namespace TpChat.Controllers.Login
 
         public static bool Joined = false;
 
-        public static string URL = "http://www.persiann24.tk/";
-        public static string DOMAIN = "www.persiann24.tk";
+        public static string URL = "http://www.persain777.ml/";
+        public static string DOMAIN = "www.persain777.ml";
         //public static string URL_banned { get { return URL + "benned"; } }
         public struct ID
         {
