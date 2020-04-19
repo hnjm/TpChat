@@ -2,12 +2,11 @@
 
 namespace TpChat.Controllers.Login
 {
-    /* IMPORTANT
-     * Handling alerts:
-     * use console.log() instead and capture the message
-     * by ConsoleMessage event of geckofx.
+    /* Alternative for taking care of evnets
+     * use console.log() instead and capture the message then
+       by ConsoleMessage event of geckofx.
     */
-    /* Considerale Events:
+    /* Considerale gecko Events:
      * < misc >
      * ConsoleMessage
      * CreateWindow 
@@ -19,13 +18,14 @@ namespace TpChat.Controllers.Login
     */
     public static class Data
     {
-        //public Cookie;
+        public const string GatewayTimeout= "Gateway Timeout";
+        public const string ServiceUnavailable = "Service unavailable";
+
         public static bool Joined = false;
 
         public static string URL = "http://www.persiann24.tk/";
         public static string DOMAIN = "www.persiann24.tk";
         //public static string URL_banned { get { return URL + "benned"; } }
-
         public struct ID
         {
             public const string USERNAME = "username";

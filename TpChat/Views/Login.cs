@@ -24,6 +24,7 @@ namespace TpChat.Views
 {
     public partial class Login : Form
     {
+        private bool loading = false;
         private bool GuestMode = false;
         public Login()
         {
@@ -104,8 +105,31 @@ namespace TpChat.Views
             //browser.Navigate($"javascript:void({code})");
             //Application.DoEvents();
         }
+        
         private bool ValidatedUsernameChars() => txtboxUsername.Text.Length > 1;
+        
+        private void ShowServerError()
+        {
+            MessageBox.Show(
+                "سایت در حال حاضر در دسترس نمی باشد" + '\n' +
+                "لطفا لحظاتی صبر کنید و مجددا امتحان کنید",
+                "خطا",
+                MessageBoxButtons.OK, MessageBoxIcon.Error
+                );
+            this.Exit();
+        }
+        private bool IsServiceUnavailable()
+        {
+            bool gate = true, service = true;
+            var p = browser.Document.GetElementsByTagName("p")[0];
+            var body = browser.Document.GetElementsByTagName("body")[0];
 
+            gate = p.TextContent.ToLower().Contains(Data.GatewayTimeout.ToLower());
+            service = body.TextContent.ToLower().Contains(Data.ServiceUnavailable.ToLower());
+
+            return gate || service;
+        }
+        // 
         private static string GetBetween(string strSource, string strStart, string strEnd)
         {
             int Start, End;
@@ -183,6 +207,7 @@ namespace TpChat.Views
 
         private void Loader_on()
         {
+            this.loading = true;
             this.UseWaitCursor = true;
             this.picboxLoader.Visible = true;
             this.picboxLoader.BringToFront();
@@ -191,6 +216,7 @@ namespace TpChat.Views
         }
         private void Loader_off()
         {
+            this.loading = false;
             this.UseWaitCursor = false;
             this.picboxLoader.Visible = false;
         }
@@ -211,10 +237,16 @@ namespace TpChat.Views
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
-            TryPing();
             Loader_on();
+            TryPing();
             if (ValidatedUsernameChars())
             {
+                if (loading)
+                    return;
+
+                if (IsServiceUnavailable())
+                    ShowServerError();
+
                 if (GuestMode)
                     GuestLogin();
                 else
@@ -222,7 +254,6 @@ namespace TpChat.Views
             }
             else
                 MessageBox.Show("حداقل طول نام کاربری ۲ حرف می باشد");
-
             Loader_off();
         }
         private void btnHelp_Click(object sender, EventArgs e)

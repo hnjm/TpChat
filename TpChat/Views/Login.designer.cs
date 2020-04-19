@@ -157,12 +157,11 @@
             // browser
             // 
             this.browser.FrameEventsPropagateToMainWindow = false;
-            this.browser.Location = new System.Drawing.Point(20, 141);
+            this.browser.Location = new System.Drawing.Point(14, 281);
             this.browser.Name = "browser";
-            this.browser.Size = new System.Drawing.Size(44, 28);
+            this.browser.Size = new System.Drawing.Size(714, 257);
             this.browser.TabIndex = 1003;
             this.browser.UseHttpActivityObserver = false;
-            this.browser.Visible = false;
             this.browser.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.browser_Navigating);
             this.browser.DocumentCompleted += new System.EventHandler<Gecko.Events.GeckoDocumentCompletedEventArgs>(this.browser_DocumentCompleted);
             this.browser.ProgressChanged += new System.EventHandler<Gecko.GeckoProgressEventArgs>(this.browser_ProgressChanged);
@@ -246,7 +245,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(385, 188);
+            this.ClientSize = new System.Drawing.Size(740, 550);
             this.Controls.Add(this.picboxLoader);
             this.Controls.Add(this.btnChatrooms);
             this.Controls.Add(this.txtboxChatAddress);
