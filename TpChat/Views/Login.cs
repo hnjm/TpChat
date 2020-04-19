@@ -69,11 +69,18 @@ namespace TpChat.Views
             {
                 string badnettxt = "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
                    '\n' + "ارتباط با سایت امکان پذیر نمی باشد" +
-                   '\n' + "اینترنت شما ضعیف یا قطع می باشد";
-                MessageBox.Show(badnettxt, "خطا",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                Exit();
+                   '\n' + "اینترنت شما ضعیف یا قطع می باشد" +
+                   '\n' + '\n' + "آیا می خواهید دوباره امتحان کنید؟";
+
+                var answer=MessageBox.Show(badnettxt,
+                                "خطا",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Error);
+
+                if (answer == DialogResult.Yes)
+                    Application.Restart();
+                else
+                    Exit();
             }
         }
         private void InitBrowser()
@@ -105,9 +112,9 @@ namespace TpChat.Views
             //browser.Navigate($"javascript:void({code})");
             //Application.DoEvents();
         }
-        
+
         private bool ValidatedUsernameChars() => txtboxUsername.Text.Length > 1;
-        
+
         private void ShowServerError()
         {
             MessageBox.Show(
