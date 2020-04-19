@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.browser = new Gecko.GeckoWebBrowser();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -40,6 +41,7 @@
             this.browser.Size = new System.Drawing.Size(621, 364);
             this.browser.TabIndex = 0;
             this.browser.UseHttpActivityObserver = false;
+            this.browser.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.browser_Navigating);
             // 
             // button1
             // 
@@ -49,6 +51,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Home
             // 
@@ -57,6 +60,7 @@
             this.ClientSize = new System.Drawing.Size(643, 440);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.browser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Home";
             this.Text = "TpChat";
             this.ResumeLayout(false);
