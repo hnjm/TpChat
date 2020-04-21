@@ -308,7 +308,6 @@ namespace TpChat.Views
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
-            MessageBox.Show(e.Uri.AbsoluteUri);
             browser.Document.GetElementsByTagName("body")[0].Click();
 
             this.Loader_off();
