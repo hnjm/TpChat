@@ -204,7 +204,7 @@ namespace TpChat.Views
         {
             this.loading = true;
             this.UseWaitCursor = true;
-            //this.picboxLoader.Visible = true;
+            this.picboxLoader.Visible = true;
             this.picboxLoader.BringToFront();
             this.lblPercentage.BringToFront();
             this.progbarLoader.BringToFront();
@@ -297,10 +297,6 @@ namespace TpChat.Views
         private void browser_Redirecting(object sender, GeckoRedirectingEventArgs e)
         {
             Loader_on();
-            MessageBox.Show("Nav to: " + e.Uri.Host);
-            e.Cancel = true;
-            browser.Navigate(e.Uri.Host);
-            return;
         }
         private void browser_ProgressChanged(object sender, GeckoProgressEventArgs e)
         {
@@ -316,9 +312,7 @@ namespace TpChat.Views
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
-            browser.Document.GetElementsByTagName("body")[0].Click();
-
-            this.Loader_off();
+             this.Loader_off();
             progbarLoader.Visible = false;
             lblPercentage.Visible = false;
         }

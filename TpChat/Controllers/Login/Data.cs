@@ -22,7 +22,11 @@ namespace TpChat.Controllers.Login
         public const string ServiceUnavailable = "Service unavailable";
 
         public static bool Joined = false;
-
+        // Real url
+        // < body onclick = "location.href='http://www.sahra777.tk'" >
+        // Becomes :
+        // < body >
+        //
         public static string URL = "http://www.nazchat.org/";
         public static string DOMAIN = new Uri(URL).Host;
         //public static string URL_banned { get { return URL + "benned"; } }
