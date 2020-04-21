@@ -204,7 +204,7 @@ namespace TpChat.Views
         {
             this.loading = true;
             this.UseWaitCursor = true;
-            this.picboxLoader.Visible = true;
+            //this.picboxLoader.Visible = true;
             this.picboxLoader.BringToFront();
             this.lblPercentage.BringToFront();
             this.progbarLoader.BringToFront();
