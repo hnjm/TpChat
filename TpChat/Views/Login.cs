@@ -293,6 +293,7 @@ namespace TpChat.Views
                 new Home(Data.URL).ShowDialog();
             }
         }
+        private void browser_Redirecting(object sender, GeckoRedirectingEventArgs e) => this.Loader_on();
         private void browser_ProgressChanged(object sender, GeckoProgressEventArgs e)
         {
             var currentP = iTool.iMath.General.Percentage(e.CurrentProgress, e.MaximumProgress);

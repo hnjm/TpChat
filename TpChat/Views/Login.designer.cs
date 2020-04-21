@@ -165,6 +165,7 @@
             this.browser.TabIndex = 1003;
             this.browser.UseHttpActivityObserver = false;
             this.browser.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.browser_Navigating);
+            this.browser.Redirecting += new System.EventHandler<Gecko.GeckoRedirectingEventArgs>(this.browser_Redirecting);
             this.browser.DocumentCompleted += new System.EventHandler<Gecko.Events.GeckoDocumentCompletedEventArgs>(this.browser_DocumentCompleted);
             this.browser.ProgressChanged += new System.EventHandler<Gecko.GeckoProgressEventArgs>(this.browser_ProgressChanged);
             // 
