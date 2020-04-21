@@ -93,7 +93,7 @@ namespace TpChat.Views
         {
             Xpcom.Initialize("Firefox");
             this.browser.Navigate(Data.URL);
-            this.browser.CreateWindow += Browser_CreateWindow;
+            //this.browser.CreateWindow += Browser_CreateWindow;
         }
         private string JSval(string code, bool closeProgram = false)
         {
@@ -285,6 +285,7 @@ namespace TpChat.Views
         private void browser_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
         {
             this.Loader_on();
+            
             bool joined = e.Uri.LocalPath.ToLower().Contains("chat");
             if (joined)
             {
@@ -293,7 +294,14 @@ namespace TpChat.Views
                 new Home(Data.URL).ShowDialog();
             }
         }
-        private void browser_Redirecting(object sender, GeckoRedirectingEventArgs e) => this.Loader_on();
+        private void browser_Redirecting(object sender, GeckoRedirectingEventArgs e)
+        {
+            Loader_on();
+            MessageBox.Show("Nav to: " + e.Uri.Host);
+            e.Cancel = true;
+            browser.Navigate(e.Uri.Host);
+            return;
+        }
         private void browser_ProgressChanged(object sender, GeckoProgressEventArgs e)
         {
             var currentP = iTool.iMath.General.Percentage(e.CurrentProgress, e.MaximumProgress);
