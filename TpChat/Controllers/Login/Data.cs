@@ -23,8 +23,8 @@ namespace TpChat.Controllers.Login
 
         public static bool Joined = false;
 
-        public static string URL = "http://www.persianchat.in/";
-        public static string DOMAIN = "www.persianchat.in";
+        public static string URL = "http://www.nazchat.org/";
+        public static string DOMAIN = new Uri(URL).Host;
         //public static string URL_banned { get { return URL + "benned"; } }
         public struct ID
         {

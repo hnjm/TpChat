@@ -93,7 +93,7 @@ namespace TpChat.Views
         {
             Xpcom.Initialize("Firefox");
             this.browser.Navigate(Data.URL);
-            //this.browser.CreateWindow += Browser_CreateWindow;
+            this.browser.CreateWindow += Browser_CreateWindow;
         }
         private string JSval(string code, bool closeProgram = false)
         {
@@ -138,21 +138,6 @@ namespace TpChat.Views
             service = body.TextContent.ToLower().Contains(Data.ServiceUnavailable.ToLower());
 
             return gate || service;
-        }
-        // 
-        private static string GetBetween(string strSource, string strStart, string strEnd)
-        {
-            int Start, End;
-            if (strSource.Contains(strStart) && strSource.Contains(strEnd))
-            {
-                Start = strSource.IndexOf(strStart, 0) + strStart.Length;
-                End = strSource.IndexOf(strEnd, Start);
-                return strSource.Substring(Start, End - Start);
-            }
-            else
-            {
-                return "";
-            }
         }
         #endregion
 
@@ -308,17 +293,6 @@ namespace TpChat.Views
                 new Home(Data.URL).ShowDialog();
             }
         }
-        private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
-        {
-            browser.Document.GetElementsByTagName("body")[0].Click();
-            // OR
-            JSval("LoadStandardPop()");
-            Application.DoEvents();
-
-            this.Loader_off();
-            progbarLoader.Visible = false;
-            lblPercentage.Visible = false;
-        }
         private void browser_ProgressChanged(object sender, GeckoProgressEventArgs e)
         {
             var currentP = iTool.iMath.General.Percentage(e.CurrentProgress, e.MaximumProgress);
@@ -330,6 +304,15 @@ namespace TpChat.Views
                 progbarLoader.Value = currentProg;
             if (progbarLoader.Value > 0)
                 lblPercentage.Text = progbarLoader.Value - 1 + " %";
+        }
+        private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
+        {
+            MessageBox.Show(e.Uri.AbsoluteUri);
+            browser.Document.GetElementsByTagName("body")[0].Click();
+
+            this.Loader_off();
+            progbarLoader.Visible = false;
+            lblPercentage.Visible = false;
         }
     }
 }
