@@ -48,8 +48,14 @@ namespace TpChat.Controllers.Login
         {
             public const string MSG_Fetch = "msgAlert_content";
         }
+        public struct Persian
+        {
+            public const string LEAST_USERNAME_CHARS = "حداقل طول نام کاربری ۲ حرف می باشد";
+        }
+
         // TODO:
         // alerts for other events.
+
         public const string LoginJS_guest = @"
 function login(e) {
     1 == firstlogin && ($('#password').val(''), firstlogin = !1);

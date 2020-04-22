@@ -253,28 +253,29 @@ namespace TpChat.Views
         {
             Loader_on();
             TryPing();
-            if (!RealDomainAvailable)
+            
+            if (this.RealDomainAvailable)
             {
-                browser.Navigate(Data.URL);
-                return;
-            }
-            if (ValidatedUsernameChars())
-            {
-                if (loading)
-                    return;
+                if (ValidatedUsernameChars())
+                {
+                    if (loading)
+                        return;
 
-                if (IsServiceUnavailable())
-                    ShowServerError();
+                    if (IsServiceUnavailable())
+                        ShowServerError();
 
-                if (GuestMode)
-                    GuestLogin();
+                    if (GuestMode)
+                        GuestLogin();
+                    else
+                        MemberLogin();
+                }
                 else
-                    MemberLogin();
+                    MessageBox.Show(Data.Persian.LEAST_USERNAME_CHARS);
+
+                Loader_off();
             }
             else
-                MessageBox.Show("حداقل طول نام کاربری ۲ حرف می باشد");
-            
-            Loader_off();
+                browser.Navigate(Data.URL);
         }
         private void btnHelp_Click(object sender, EventArgs e)
         {
