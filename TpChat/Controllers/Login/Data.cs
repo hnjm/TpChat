@@ -50,7 +50,14 @@ namespace TpChat.Controllers.Login
         }
         public struct Persian
         {
+            public const string ERROR = "خطا";
+            public const string TOOK_TOO_LONG = "مدت زیادی طول کشید";
             public const string LEAST_USERNAME_CHARS = "حداقل طول نام کاربری ۲ حرف می باشد";
+            public static readonly string BAD_INTERNET= "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
+                   '\n' + "ارتباط با سایت امکان پذیر نمی باشد" +
+                   '\n' + "اینترنت شما ضعیف یا قطع می باشد";
+            public static readonly string SITE_NOT_AVAILABLE = "سایت در حال حاضر در دسترس نمی باشد" + '\n' +
+                "لطفا لحظاتی صبر کنید و مجددا امتحان کنید";
         }
 
         // TODO:

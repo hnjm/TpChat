@@ -59,8 +59,8 @@ namespace TpChat.Views
         private void ExitTookSoLong(object sender, EventArgs e)
         {
             MessageBox.Show(
-                "مدت زیادی طول کشید",
-                "خطا",
+                Data.Persian.TOOK_TOO_LONG,
+                Data.Persian.ERROR,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning
                 );
@@ -79,12 +79,8 @@ namespace TpChat.Views
             var hasnet = iTool.Network.iPing.Ping(Data.DOMAIN, 5000).pingable;
             if (!hasnet) // if no ping in 5 seconds
             {
-                string badnettxt = "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
-                   '\n' + "ارتباط با سایت امکان پذیر نمی باشد" +
-                   '\n' + "اینترنت شما ضعیف یا قطع می باشد";
-
-                MessageBox.Show(badnettxt,
-                                "خطا",
+                MessageBox.Show(Data.Persian.BAD_INTERNET,
+                                Data.Persian.ERROR,
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 Exit();
@@ -136,9 +132,8 @@ namespace TpChat.Views
         private void ShowServerError()
         {
             MessageBox.Show(
-                "سایت در حال حاضر در دسترس نمی باشد" + '\n' +
-                "لطفا لحظاتی صبر کنید و مجددا امتحان کنید",
-                "خطا",
+                Data.Persian.SITE_NOT_AVAILABLE,
+                Data.Persian.ERROR,
                 MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
             this.Exit();
