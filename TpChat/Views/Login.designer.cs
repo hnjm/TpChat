@@ -165,7 +165,6 @@
             this.browser.TabIndex = 1003;
             this.browser.UseHttpActivityObserver = false;
             this.browser.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.browser_Navigating);
-            this.browser.Redirecting += new System.EventHandler<Gecko.GeckoRedirectingEventArgs>(this.browser_Redirecting);
             this.browser.DocumentCompleted += new System.EventHandler<Gecko.Events.GeckoDocumentCompletedEventArgs>(this.browser_DocumentCompleted);
             this.browser.ProgressChanged += new System.EventHandler<Gecko.GeckoProgressEventArgs>(this.browser_ProgressChanged);
             // 
@@ -185,7 +184,7 @@
             // picboxLoader
             // 
             this.picboxLoader.Image = ((System.Drawing.Image)(resources.GetObject("picboxLoader.Image")));
-            this.picboxLoader.Location = new System.Drawing.Point(166, 141);
+            this.picboxLoader.Location = new System.Drawing.Point(361, 231);
             this.picboxLoader.Name = "picboxLoader";
             this.picboxLoader.Size = new System.Drawing.Size(30, 23);
             this.picboxLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

@@ -27,9 +27,13 @@ namespace TpChat.Controllers.Login
         // Becomes :
         // < body >
         //
-        public static string URL = "http://www.nazchat.org/";
+        //public static string URL = "http://www.nazchat.org/";
+        public static string URL = "http://www.persain777.ml/";
         public static string DOMAIN = new Uri(URL).Host;
         //public static string URL_banned { get { return URL + "benned"; } }
+
+        public static string RealUrl = string.Empty;
+
         public struct ID
         {
             public const string USERNAME = "username";

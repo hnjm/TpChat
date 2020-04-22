@@ -26,6 +26,7 @@ namespace TpChat.Views
     {
         private bool loading = false;
         private bool GuestMode = false;
+        private bool RealDomainAvailable = false;
         public Login()
         {
             InitializeComponent();
@@ -114,6 +115,20 @@ namespace TpChat.Views
             return result;
             //browser.Navigate($"javascript:void({code})");
             //Application.DoEvents();
+        }
+
+        private void GetRealUrl()
+        {
+            var loc = browser.Document.GetElementsByTagName("body")[0].GetAttribute("onclick");
+            if (loc != null)
+            {
+                Data.RealUrl = loc
+                    .Split('=')[1]
+                    .Replace("'", "")
+                    .Replace("\"", "");
+
+                this.RealDomainAvailable = true;
+            }
         }
 
         private bool ValidatedUsernameChars() => txtboxUsername.Text.Length > 1;
@@ -238,6 +253,11 @@ namespace TpChat.Views
         {
             Loader_on();
             TryPing();
+            if (!RealDomainAvailable)
+            {
+                browser.Navigate(Data.URL);
+                return;
+            }
             if (ValidatedUsernameChars())
             {
                 if (loading)
@@ -253,6 +273,7 @@ namespace TpChat.Views
             }
             else
                 MessageBox.Show("حداقل طول نام کاربری ۲ حرف می باشد");
+            
             Loader_off();
         }
         private void btnHelp_Click(object sender, EventArgs e)
@@ -285,7 +306,7 @@ namespace TpChat.Views
         private void browser_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
         {
             this.Loader_on();
-            
+
             bool joined = e.Uri.LocalPath.ToLower().Contains("chat");
             if (joined)
             {
@@ -293,10 +314,6 @@ namespace TpChat.Views
                 this.Dispose(true);
                 new Home(Data.URL).ShowDialog();
             }
-        }
-        private void browser_Redirecting(object sender, GeckoRedirectingEventArgs e)
-        {
-            Loader_on();
         }
         private void browser_ProgressChanged(object sender, GeckoProgressEventArgs e)
         {
@@ -312,7 +329,8 @@ namespace TpChat.Views
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
-             this.Loader_off();
+            GetRealUrl();
+            this.Loader_off();
             progbarLoader.Visible = false;
             lblPercentage.Visible = false;
         }
