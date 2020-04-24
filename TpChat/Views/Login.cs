@@ -26,6 +26,7 @@ namespace TpChat.Views
     {
         private bool loading = false;
         private bool GuestMode = false;
+        private bool OnRealDomain = false;
         private bool RealDomainAvailable = false;
         public Login()
         {
@@ -115,9 +116,9 @@ namespace TpChat.Views
         private void GetRealUrl()
         {
             var loc = browser.Document.GetElementsByTagName("body")[0].GetAttribute("onclick");
-            // if real host available
-            if (loc == null)
-                this.RealDomainAvailable = true;
+            // if real host available and it's not the second time this method's being called.
+            if (loc == null && !OnRealDomain)
+                this.OnRealDomain = true;
             else
             {
                 Data.RealUrl = loc
@@ -347,11 +348,18 @@ namespace TpChat.Views
         {
             JSval(Data.JS.PopUpBlock);
             GetRealUrl();
-            if (this.RealDomainAvailable)
 
+            bool ThereIsUsernameInput = browser.Document.GetElementById("username") != null;
+            if (OnRealDomain && ThereIsUsernameInput)
+            {
                 this.Loader_off();
-            progbarLoader.Visible = false;
-            lblPercentage.Visible = false;
+                progbarLoader.Visible = false;
+                lblPercentage.Visible = false;
+            }
+            else
+            {
+                GetRealUrl();
+            }
         }
     }
 }
