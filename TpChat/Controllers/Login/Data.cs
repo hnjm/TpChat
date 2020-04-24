@@ -18,7 +18,7 @@ namespace TpChat.Controllers.Login
     */
     public static class Data
     {
-        public const string GatewayTimeout= "Gateway Timeout";
+        public const string GatewayTimeout = "Gateway Timeout";
         public const string ServiceUnavailable = "Service unavailable";
 
         public static bool Joined = false;
@@ -53,19 +53,23 @@ namespace TpChat.Controllers.Login
             public const string ERROR = "خطا";
             public const string TOOK_TOO_LONG = "مدت زیادی طول کشید";
             public const string LEAST_USERNAME_CHARS = "حداقل طول نام کاربری ۲ حرف می باشد";
-            public static readonly string BAD_INTERNET= "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
+            public static readonly string BAD_INTERNET = "خطای ارتباط! دلایل خطا میتواند از گزینه های زیر باشد" +
                    '\n' + "ارتباط با سایت امکان پذیر نمی باشد" +
                    '\n' + "اینترنت شما ضعیف یا قطع می باشد";
             public static readonly string SITE_NOT_AVAILABLE = "سایت در حال حاضر در دسترس نمی باشد" + '\n' +
                 "لطفا لحظاتی صبر کنید و مجددا امتحان کنید";
-            public static readonly string INVALID_URL = "آدرس سایت اشتباه است." + '\n' + 
+            public static readonly string INVALID_URL = "آدرس سایت اشتباه است." + '\n' +
                 "آیا مطمئن اید که این آدرس صحیح می باشد؟";
         }
 
         // TODO:
         // alerts for other events.
 
-        public const string LoginJS_guest = @"
+        public struct JS
+        {
+            public const string PopUpBlock = "window.open = (url, windowName, windowFeatures) => console.log(url)";
+
+            public const string LoginJS_guest = @"
 function login(e) {
     1 == firstlogin && ($('#password').val(''), firstlogin = !1);
     var t = e.username.value;
@@ -142,7 +146,7 @@ function login(e) {
 }
             ";
 
-        public const string LoginJS_member = @"
+            public const string LoginJS_member = @"
 function login(e) {
     var t = e.username.value;
     return ($('#ajax_loader').html('<center><img height=\'30\' width=\'30\' src=\'/theme/microblog/images/ajax-loader.gif\'></center>'),
@@ -215,6 +219,7 @@ function login(e) {
         )
 }
             ";
+        }
 
     }
 }

@@ -177,8 +177,8 @@ namespace TpChat.Views
             JSval("login(this)");
             Application.DoEvents();
         }
-        private void InitLoginGuest() => JSval(Data.LoginJS_guest);
-        private void InitLoginMember() => JSval(Data.LoginJS_member);
+        private void InitLoginGuest() => JSval(Data.JS.LoginJS_guest);
+        private void InitLoginMember() => JSval(Data.JS.LoginJS_member);
 
         //private bool IsPassHidden()
         //{
@@ -345,7 +345,7 @@ namespace TpChat.Views
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
-            JSval("window.open = (url, windowName, windowFeatures) => console.log('new window open: ' + url)");
+            JSval(Data.JS.PopUpBlock);
             GetRealUrl();
             if (this.RealDomainAvailable)
 
