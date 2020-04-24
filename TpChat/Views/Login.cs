@@ -29,11 +29,11 @@ namespace TpChat.Views
         private bool RealDomainAvailable = false;
         public Login()
         {
+            TryPing();
             InitializeComponent();
             this.picboxLoader.Dock = DockStyle.Fill;
             this.cmbxGender.SelectedItem = cmbxGender.Items[0]; // default gender is boy
             this.txtboxChatAddress.Text = Data.URL; // for now, i use a default chatroom address
-            // Put TryPing() here after making it asynchronous (By threading, not async).
             Loader_on();
             InitBrowser();
         }
@@ -45,7 +45,6 @@ namespace TpChat.Views
             this.progbarLoader.BringToFront();
             this.lblPercentage.Location = new Point(this.lblPercentage.Location.X, 10);
             this.progbarLoader.Location = new Point(this.progbarLoader.Location.X, loaderY);
-            TryPing();
         }
 
         #region Statics
@@ -116,20 +115,41 @@ namespace TpChat.Views
         private void GetRealUrl()
         {
             var loc = browser.Document.GetElementsByTagName("body")[0].GetAttribute("onclick");
-            if (loc != null)
+            // if real host available
+            if (loc == null)
+                this.RealDomainAvailable = true;
+            else
             {
                 Data.RealUrl = loc
                     .Split('=')[1]
                     .Replace("'", "")
                     .Replace("\"", "");
-
-                this.RealDomainAvailable = true;
+                try
+                {
+                    new Uri(Data.RealUrl);
+                    this.RealDomainAvailable = true;
+                }
+                catch
+                {
+                    ErrorWrongUrl();
+                    this.RealDomainAvailable = false;
+                }
             }
         }
 
         private bool ValidatedUsernameChars() => txtboxUsername.Text.Length > 1;
 
-        private void ShowServerError()
+        private void ErrorWrongUrl()
+        {
+            MessageBox.Show(
+                Data.Persian.ERROR,
+                Data.Persian.INVALID_URL,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+                );
+            this.Exit();
+        }
+        private void ErrorServerUnavailable()
         {
             MessageBox.Show(
                 Data.Persian.SITE_NOT_AVAILABLE,
@@ -214,7 +234,7 @@ namespace TpChat.Views
         {
             this.loading = true;
             this.UseWaitCursor = true;
-            this.picboxLoader.Visible = true;
+            //this.picboxLoader.Visible = true;
             this.picboxLoader.BringToFront();
             this.lblPercentage.BringToFront();
             this.progbarLoader.BringToFront();
@@ -248,7 +268,7 @@ namespace TpChat.Views
         {
             Loader_on();
             TryPing();
-            
+
             if (this.RealDomainAvailable)
             {
                 if (ValidatedUsernameChars())
@@ -257,7 +277,7 @@ namespace TpChat.Views
                         return;
 
                     if (IsServiceUnavailable())
-                        ShowServerError();
+                        ErrorServerUnavailable();
 
                     if (GuestMode)
                         GuestLogin();
@@ -325,8 +345,11 @@ namespace TpChat.Views
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
+            JSval("window.open = (url, windowName, windowFeatures) => console.log('new window open: ' + url)");
             GetRealUrl();
-            this.Loader_off();
+            if (this.RealDomainAvailable)
+
+                this.Loader_off();
             progbarLoader.Visible = false;
             lblPercentage.Visible = false;
         }

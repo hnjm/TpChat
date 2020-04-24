@@ -58,6 +58,8 @@ namespace TpChat.Controllers.Login
                    '\n' + "اینترنت شما ضعیف یا قطع می باشد";
             public static readonly string SITE_NOT_AVAILABLE = "سایت در حال حاضر در دسترس نمی باشد" + '\n' +
                 "لطفا لحظاتی صبر کنید و مجددا امتحان کنید";
+            public static readonly string INVALID_URL = "آدرس سایت اشتباه است." + '\n' + 
+                "آیا مطمئن اید که این آدرس صحیح می باشد؟";
         }
 
         // TODO:
