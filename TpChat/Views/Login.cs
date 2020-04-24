@@ -27,7 +27,7 @@ namespace TpChat.Views
         private bool loading = false;
         private bool GuestMode = false;
         private bool OnRealDomain = false;
-        private bool RealDomainAvailable = false;
+        private bool GotRealHostFromHtml = false;
         public Login()
         {
             TryPing();
@@ -128,12 +128,12 @@ namespace TpChat.Views
                 try
                 {
                     new Uri(Data.RealUrl);
-                    this.RealDomainAvailable = true;
+                    this.GotRealHostFromHtml = true;
                 }
                 catch
                 {
                     ErrorWrongUrl();
-                    this.RealDomainAvailable = false;
+                    this.GotRealHostFromHtml = false;
                 }
             }
         }
@@ -270,7 +270,7 @@ namespace TpChat.Views
             Loader_on();
             TryPing();
 
-            if (this.RealDomainAvailable)
+            if (this.GotRealHostFromHtml)
             {
                 if (ValidatedUsernameChars())
                 {
@@ -350,16 +350,17 @@ namespace TpChat.Views
             GetRealUrl();
 
             bool ThereIsUsernameInput = browser.Document.GetElementById("username") != null;
+
             if (OnRealDomain && ThereIsUsernameInput)
             {
                 this.Loader_off();
                 progbarLoader.Visible = false;
                 lblPercentage.Visible = false;
             }
+            else if (GotRealHostFromHtml)
+                browser.Navigate(Data.RealUrl);
             else
-            {
                 GetRealUrl();
-            }
         }
     }
 }
