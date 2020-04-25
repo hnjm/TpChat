@@ -225,19 +225,18 @@
             // txtboxChatAddress
             // 
             this.txtboxChatAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F);
-            this.txtboxChatAddress.Location = new System.Drawing.Point(54, 17);
+            this.txtboxChatAddress.Location = new System.Drawing.Point(44, 17);
             this.txtboxChatAddress.Name = "txtboxChatAddress";
             this.txtboxChatAddress.ReadOnly = true;
-            this.txtboxChatAddress.Size = new System.Drawing.Size(223, 24);
+            this.txtboxChatAddress.Size = new System.Drawing.Size(233, 24);
             this.txtboxChatAddress.TabIndex = 1010;
             // 
             // btnChatrooms
             // 
-            this.btnChatrooms.Location = new System.Drawing.Point(14, 17);
+            this.btnChatrooms.Location = new System.Drawing.Point(12, 17);
             this.btnChatrooms.Name = "btnChatrooms";
-            this.btnChatrooms.Size = new System.Drawing.Size(34, 23);
+            this.btnChatrooms.Size = new System.Drawing.Size(26, 24);
             this.btnChatrooms.TabIndex = 1011;
-            this.btnChatrooms.Text = "=";
             this.btnChatrooms.UseVisualStyleBackColor = true;
             this.btnChatrooms.Visible = false;
             // 
