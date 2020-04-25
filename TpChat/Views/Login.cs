@@ -117,16 +117,10 @@ namespace TpChat.Views
             var loc = browser.Document.GetElementsByTagName("body")[0].GetAttribute("onclick");
             // if real host available
             if (loc == null)
-            {
-                // Debug
-                MessageBox.Show("No url found from html\n");
                 this.OnRealDomain = true;
-            }
             else
             {
                 Data.RealUrl = loc.Split('=')[1].Replace("'", "").Replace("\"", "");
-                // Debug
-                MessageBox.Show("Got url : " + Data.RealUrl);
                 try
                 {
                     new Uri(Data.RealUrl);
@@ -213,6 +207,8 @@ namespace TpChat.Views
 
             (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
                 .Value = this.txtboxPassword.Text;
+
+            MessageBox.Show((document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement).Value);
 
             LoginToChat();
         }
@@ -332,9 +328,6 @@ namespace TpChat.Views
                 this.Loader_off();
                 progbarLoader.Visible = false;
                 lblPercentage.Visible = false;
-                // Debug
-                (browser.Document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
-                    .Value = "Fuckkk";
             }
             else if (GotRealHostFromHtml)
                 browser.Navigate(Data.RealUrl);

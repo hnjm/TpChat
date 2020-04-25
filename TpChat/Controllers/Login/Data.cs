@@ -135,8 +135,10 @@ function login(e) {
                         default:
                             try {
                                 var t = jQuery.parseJSON(e);
-                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), $('#lay_captcha').slideUp(1e3), $('#lay_gender').slideUp(1e3), $('#lay_hide').slideUp(1e3), $('#lay_security_question').slideDown(1e3)) : null
-                            } catch (n) { }
+                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), $('#lay_captcha').slideUp(1e3), 
+                                $('#lay_gender').slideUp(1e3), $('#lay_hide').slideUp(1e3), $('#lay_security_question').slideDown(1e3)) : 
+                                window.alert(e);
+                            } catch (n) { window.alert(e) }
                     }
                     $('#ajax_loader').html('')
                 }
@@ -209,8 +211,10 @@ function login(e) {
                         default:
                             try {
                                 var t = jQuery.parseJSON(e);
-                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), $('#lay_captcha').slideUp(1e3), $('#lay_gender').slideUp(1e3), $('#lay_hide').slideUp(1e3), $('#lay_security_question').slideDown(1e3)) : null
-                            } catch (n) { }
+                                'object' == typeof t ? ($('#lay_pw').slideUp(1e3), $('#lay_captcha').slideUp(1e3), 
+                                $('#lay_gender').slideUp(1e3), $('#lay_hide').slideUp(1e3), $('#lay_security_question').slideDown(1e3)) : 
+                                window.alert(e);
+                            } catch (n) { window.alert(e) }
                     }
                     $('#ajax_loader').html('')
                 }

@@ -18,13 +18,14 @@ namespace TpChat.Views
         {
             InitializeComponent();
             this.browser.Navigate(ChatroomAddress);
+            this.browser.Refresh();
         }
 
         private void browser_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
         {
             // if navigating to the login page ... either exit or show login + mbox(you have logged out)
-            if (e.Uri.LocalPath == "/")
-                MessageBox.Show(e.Uri.LocalPath);
+            //if (e.Uri.LocalPath == "/")
+            //    MessageBox.Show(e.Uri.LocalPath);
         }
 
         private void button1_Click(object sender, EventArgs e)
