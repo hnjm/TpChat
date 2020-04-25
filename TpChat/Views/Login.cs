@@ -117,14 +117,13 @@ namespace TpChat.Views
         {
             var loc = browser.Document.GetElementsByTagName("body")[0].GetAttribute("onclick");
             // if real host available and it's not the second time this method's being called.
-            if (loc == null && !OnRealDomain)
+            if (loc == null)
+            {
                 this.OnRealDomain = true;
+            }
             else
             {
-                Data.RealUrl = loc
-                    .Split('=')[1]
-                    .Replace("'", "")
-                    .Replace("\"", "");
+                Data.RealUrl = loc.Split('=')[1].Replace("'", "").Replace("\"", "");
                 try
                 {
                     new Uri(Data.RealUrl);
@@ -143,8 +142,8 @@ namespace TpChat.Views
         private void ErrorWrongUrl()
         {
             MessageBox.Show(
-                Data.Persian.ERROR,
                 Data.Persian.INVALID_URL,
+                Data.Persian.ERROR,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning
                 );
@@ -180,23 +179,6 @@ namespace TpChat.Views
         }
         private void InitLoginGuest() => JSval(Data.JS.LoginJS_guest);
         private void InitLoginMember() => JSval(Data.JS.LoginJS_member);
-
-        //private bool IsPassHidden()
-        //{
-        //    string output;
-        //    var parent = this.browser.Document.GetElementById(Data.ID.PASSWORD_PARENT)
-        //        as GeckoHtmlElement;
-
-        //    output = parent.GetAttribute("style");
-        //    output = GetBetween(output, ":", ";");
-        //    output = output.ToLower();
-        //    return output.Contains("none");
-        //}
-        //private void CheckJoinStatus()
-        //{
-        //    if (browser.Document.GetElementById("message") != null)
-        //        Data.Joined = true;
-        //}
 
         private void GuestLogin()
         {

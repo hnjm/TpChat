@@ -35,10 +35,11 @@
             // 
             // browser
             // 
+            this.browser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.browser.FrameEventsPropagateToMainWindow = false;
-            this.browser.Location = new System.Drawing.Point(12, 12);
+            this.browser.Location = new System.Drawing.Point(0, 0);
             this.browser.Name = "browser";
-            this.browser.Size = new System.Drawing.Size(621, 364);
+            this.browser.Size = new System.Drawing.Size(643, 440);
             this.browser.TabIndex = 0;
             this.browser.UseHttpActivityObserver = false;
             this.browser.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.browser_Navigating);
