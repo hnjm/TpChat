@@ -114,11 +114,11 @@
             // chkboxShowPass
             // 
             this.chkboxShowPass.AutoSize = true;
-            this.chkboxShowPass.Font = new System.Drawing.Font("B Mitra", 12F);
-            this.chkboxShowPass.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkboxShowPass.Location = new System.Drawing.Point(14, 92);
+            this.chkboxShowPass.Font = new System.Drawing.Font("B Mitra", 13F);
+            this.chkboxShowPass.ForeColor = System.Drawing.Color.SteelBlue;
+            this.chkboxShowPass.Location = new System.Drawing.Point(14, 91);
             this.chkboxShowPass.Name = "chkboxShowPass";
-            this.chkboxShowPass.Size = new System.Drawing.Size(64, 32);
+            this.chkboxShowPass.Size = new System.Drawing.Size(68, 34);
             this.chkboxShowPass.TabIndex = 4;
             this.chkboxShowPass.Text = "رویت";
             this.chkboxShowPass.UseVisualStyleBackColor = true;
@@ -224,6 +224,7 @@
             // 
             // txtboxChatAddress
             // 
+            this.txtboxChatAddress.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtboxChatAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F);
             this.txtboxChatAddress.Location = new System.Drawing.Point(44, 17);
             this.txtboxChatAddress.Name = "txtboxChatAddress";
