@@ -38,7 +38,7 @@
             this.browser.FrameEventsPropagateToMainWindow = false;
             this.browser.Location = new System.Drawing.Point(0, 0);
             this.browser.Name = "browser";
-            this.browser.Size = new System.Drawing.Size(643, 440);
+            this.browser.Size = new System.Drawing.Size(915, 528);
             this.browser.TabIndex = 0;
             this.browser.UseHttpActivityObserver = false;
             this.browser.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.browser_Navigating);
@@ -47,11 +47,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 440);
+            this.ClientSize = new System.Drawing.Size(915, 528);
             this.Controls.Add(this.browser);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(933, 575);
             this.Name = "Home";
             this.Text = "TpChat";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
