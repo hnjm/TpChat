@@ -233,14 +233,17 @@
             // 
             // btnChatrooms
             // 
+            this.btnChatrooms.AutoSize = true;
+            this.btnChatrooms.BackColor = System.Drawing.Color.White;
             this.btnChatrooms.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnChatrooms.BackgroundImage")));
             this.btnChatrooms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnChatrooms.Enabled = false;
             this.btnChatrooms.Location = new System.Drawing.Point(12, 17);
+            this.btnChatrooms.Margin = new System.Windows.Forms.Padding(0);
             this.btnChatrooms.Name = "btnChatrooms";
             this.btnChatrooms.Size = new System.Drawing.Size(26, 24);
             this.btnChatrooms.TabIndex = 1011;
-            this.btnChatrooms.UseVisualStyleBackColor = true;
-            this.btnChatrooms.Visible = false;
+            this.btnChatrooms.UseVisualStyleBackColor = false;
             // 
             // timerLoading
             // 
