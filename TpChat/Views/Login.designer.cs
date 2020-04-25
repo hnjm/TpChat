@@ -235,7 +235,7 @@
             // btnChatrooms
             // 
             this.btnChatrooms.AutoSize = true;
-            this.btnChatrooms.BackColor = System.Drawing.Color.White;
+            this.btnChatrooms.BackColor = System.Drawing.Color.Gainsboro;
             this.btnChatrooms.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnChatrooms.BackgroundImage")));
             this.btnChatrooms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnChatrooms.Enabled = false;
