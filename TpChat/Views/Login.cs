@@ -90,7 +90,6 @@ namespace TpChat.Views
         {
             Xpcom.Initialize("Firefox");
             this.browser.Navigate(Data.URL);
-            //this.browser.CreateWindow += Browser_CreateWindow;
         }
         private string JSval(string code, bool closeProgram = false)
         {
@@ -142,6 +141,8 @@ namespace TpChat.Views
                 }
             }
         }
+
+        public void BlockPopUps() => JSval(Data.JS.PopUpBlock);
 
         private bool ValidatedUsernameChars() => txtboxUsername.Text.Length > 1;
 
@@ -295,7 +296,6 @@ namespace TpChat.Views
                 this.txtboxPassword.UseSystemPasswordChar = true;
         }
 
-        private void Browser_CreateWindow(object sender, GeckoCreateWindowEventArgs e) => e.Cancel = true;
         private void browser_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
         {
             this.Loader_on();
@@ -322,7 +322,7 @@ namespace TpChat.Views
         }
         private void browser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
-            JSval(Data.JS.PopUpBlock);
+            BlockPopUps();
             GetRealUrl();
 
             bool ThereIsUsernameInput = browser.Document.GetElementById("username") != null;
