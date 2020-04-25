@@ -208,8 +208,6 @@ namespace TpChat.Views
             (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
                 .Value = this.txtboxPassword.Text;
 
-            MessageBox.Show((document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement).Value);
-
             LoginToChat();
         }
 
@@ -217,7 +215,7 @@ namespace TpChat.Views
         {
             this.loading = true;
             this.UseWaitCursor = true;
-            //this.picboxLoader.Visible = true;
+            this.picboxLoader.Visible = true;
             this.picboxLoader.BringToFront();
             this.lblPercentage.BringToFront();
             this.progbarLoader.BringToFront();
