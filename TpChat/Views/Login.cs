@@ -132,6 +132,8 @@ namespace TpChat.Views
                 {
                     new Uri(Data.RealUrl);
                     this.GotRealHostFromHtml = true;
+                    if (Data.RealUrl == Data.URL)
+                        this.OnRealDomain = true;
                 }
                 catch
                 {
@@ -254,9 +256,6 @@ namespace TpChat.Views
             TryPing();
             if (ValidatedUsernameChars())
             {
-                if (loading)
-                    return;
-
                 if (IsServiceUnavailable())
                     ErrorServerUnavailable();
 
