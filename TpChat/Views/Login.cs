@@ -116,14 +116,18 @@ namespace TpChat.Views
         private void GetRealUrl()
         {
             var loc = browser.Document.GetElementsByTagName("body")[0].GetAttribute("onclick");
-            // if real host available and it's not the second time this method's being called.
+            // if real host available
             if (loc == null)
             {
+                // Debug
+                MessageBox.Show("No url found from html\n");
                 this.OnRealDomain = true;
             }
             else
             {
                 Data.RealUrl = loc.Split('=')[1].Replace("'", "").Replace("\"", "");
+                // Debug
+                MessageBox.Show("Got url : " + Data.RealUrl);
                 try
                 {
                     new Uri(Data.RealUrl);
@@ -191,9 +195,6 @@ namespace TpChat.Views
             (document.GetElementById(Data.ID.GENDER) as Gecko.DOM.GeckoSelectElement)
                 .SelectedIndex = this.cmbxGender.SelectedIndex;
 
-            (document.GetElementById(Data.ID.PASSWORD) as Gecko.DOM.GeckoInputElement)
-                .Value = "";
-
             LoginToChat();
         }
         private void MemberLogin()
@@ -251,29 +252,23 @@ namespace TpChat.Views
         {
             Loader_on();
             TryPing();
-
-            if (this.GotRealHostFromHtml)
+            if (ValidatedUsernameChars())
             {
-                if (ValidatedUsernameChars())
-                {
-                    if (loading)
-                        return;
+                if (loading)
+                    return;
 
-                    if (IsServiceUnavailable())
-                        ErrorServerUnavailable();
+                if (IsServiceUnavailable())
+                    ErrorServerUnavailable();
 
-                    if (GuestMode)
-                        GuestLogin();
-                    else
-                        MemberLogin();
-                }
+                if (GuestMode)
+                    GuestLogin();
                 else
-                    MessageBox.Show(Data.Persian.LEAST_USERNAME_CHARS);
-
-                Loader_off();
+                    MemberLogin();
             }
             else
-                browser.Navigate(Data.URL);
+                MessageBox.Show(Data.Persian.LEAST_USERNAME_CHARS);
+
+            Loader_off();
         }
         private void btnHelp_Click(object sender, EventArgs e)
         {
@@ -338,6 +333,9 @@ namespace TpChat.Views
                 this.Loader_off();
                 progbarLoader.Visible = false;
                 lblPercentage.Visible = false;
+                // Debug
+                (browser.Document.GetElementById(Data.ID.USERNAME) as Gecko.DOM.GeckoInputElement)
+                    .Value = "Fuckkk";
             }
             else if (GotRealHostFromHtml)
                 browser.Navigate(Data.RealUrl);
