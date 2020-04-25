@@ -233,6 +233,8 @@
             // 
             // btnChatrooms
             // 
+            this.btnChatrooms.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnChatrooms.BackgroundImage")));
+            this.btnChatrooms.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnChatrooms.Location = new System.Drawing.Point(12, 17);
             this.btnChatrooms.Name = "btnChatrooms";
             this.btnChatrooms.Size = new System.Drawing.Size(26, 24);
