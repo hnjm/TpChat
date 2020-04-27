@@ -8,4 +8,4 @@
 
 ### Todo
 #### Home
-[ ] Get Minimum window width from website.
+- [ ] Get Minimum window width from website.
