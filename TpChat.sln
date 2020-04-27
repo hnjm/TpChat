@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpChat", "TpChat\TpChat.csproj", "{48C71990-0002-4B45-ADFF-CA29DBF17CF4}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TpChat - Demo", "TpChat - Demo\TpChat - Demo.vdproj", "{FFF66213-BB6D-460F-8F42-92C870EA9420}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{48C71990-0002-4B45-ADFF-CA29DBF17CF4}.Release|x64.Build.0 = Release|Any CPU
 		{48C71990-0002-4B45-ADFF-CA29DBF17CF4}.Release|x86.ActiveCfg = Release|Any CPU
 		{48C71990-0002-4B45-ADFF-CA29DBF17CF4}.Release|x86.Build.0 = Release|Any CPU
+		{FFF66213-BB6D-460F-8F42-92C870EA9420}.Debug|Any CPU.ActiveCfg = Debug
+		{FFF66213-BB6D-460F-8F42-92C870EA9420}.Debug|x64.ActiveCfg = Debug
+		{FFF66213-BB6D-460F-8F42-92C870EA9420}.Debug|x86.ActiveCfg = Debug
+		{FFF66213-BB6D-460F-8F42-92C870EA9420}.Release|Any CPU.ActiveCfg = Release
+		{FFF66213-BB6D-460F-8F42-92C870EA9420}.Release|x64.ActiveCfg = Release
+		{FFF66213-BB6D-460F-8F42-92C870EA9420}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
