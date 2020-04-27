@@ -5,7 +5,7 @@
 
 ### Dependencies
 * Geckofx45
-
-### ToDo
+-----
+## Todo
 #### Home
 [ ] Get Minimum window width from website.
