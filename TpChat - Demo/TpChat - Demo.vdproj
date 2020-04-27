@@ -947,7 +947,7 @@
             {
             "Name" = "8:TpChat.exe"
             "Arguments" = "8:"
-            "Description" = "8:"
+            "Description" = "8:Client app for persian chatrooms that are designed by TarhPardaz"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:32512"
             "Transitive" = "11:FALSE"
@@ -961,7 +961,7 @@
             {
             "Name" = "8:TpChat.exe"
             "Arguments" = "8:"
-            "Description" = "8:"
+            "Description" = "8:Client app for persian chatrooms that are designed by TarhPardaz"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:32512"
             "Transitive" = "11:FALSE"
