@@ -160,12 +160,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E768C994C485A9097904340072315039"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5E2744A8AEB843DE8343F97E6DA8AF7E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -173,6 +167,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8EEC40AF73A79B5A2E6B6A7F76E303BB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E768C994C485A9097904340072315039"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -193,6 +193,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -209,6 +217,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -750,7 +774,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_31126F4EDB714DBEAC6BBA16F2ED35D8"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder][ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -797,24 +821,24 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:TpChat - Demo 1.0"
+        "ProductName" = "8:TpChat - Demo"
         "ProductCode" = "8:{B74B3DB4-E210-4BAB-835A-19F9CA8BF10D}"
-        "PackageCode" = "8:{610D8316-667E-4693-94A9-E301EB3BDDBC}"
+        "PackageCode" = "8:{47698FF5-F654-4ECF-B380-7B5D720D0A23}"
         "UpgradeCode" = "8:{9C659771-EE9B-41C3-AF81-42998A3BE5EA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
         "Manufacturer" = "8:Arman karimi"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:TpChat - Desktop"
+        "Title" = "8:TpChat"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Arman karimi"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Client app for "
+        "ARPCOMMENTS" = "8:Client app for persian chatrooms that are designed by TarhPardaz"
         "ARPURLINFOABOUT" = "8:github.com/armann-kr"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
@@ -919,32 +943,32 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4889AF3F57DE4B91AE01F98635EE8221"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2E411D379E7C4BF392A81CBD32EECEFE"
             {
             "Name" = "8:TpChat.exe"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_5E2744A8AEB843DE8343F97E6DA8AF7E"
-            "Folder" = "8:_29CFC82CCB95425BA79EB7A2605B5E21"
-            "WorkingFolder" = "8:_31126F4EDB714DBEAC6BBA16F2ED35D8"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BA540F5538CB46A7BC402B158025D937"
-            {
-            "Name" = "8:TpChat.exe"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
+            "IconIndex" = "3:32512"
             "Transitive" = "11:FALSE"
             "Target" = "8:_5E2744A8AEB843DE8343F97E6DA8AF7E"
             "Folder" = "8:_34DA765872744C1381CFA89294E82F4E"
             "WorkingFolder" = "8:_31126F4EDB714DBEAC6BBA16F2ED35D8"
-            "Icon" = "8:"
+            "Icon" = "8:_5E2744A8AEB843DE8343F97E6DA8AF7E"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_671568A1C2AA4D29A23D64B77380B458"
+            {
+            "Name" = "8:TpChat.exe"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:32512"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_5E2744A8AEB843DE8343F97E6DA8AF7E"
+            "Folder" = "8:_29CFC82CCB95425BA79EB7A2605B5E21"
+            "WorkingFolder" = "8:_31126F4EDB714DBEAC6BBA16F2ED35D8"
+            "Icon" = "8:_5E2744A8AEB843DE8343F97E6DA8AF7E"
             "Feature" = "8:"
             }
         }
